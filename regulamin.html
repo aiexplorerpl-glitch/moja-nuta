@@ -1,11 +1,359 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Regulamin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulamin i Polityka Prywatności — NutaNaŻyczenie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --warm-white: #fffdf9;
+    --gold: #c9963a;
+    --deep: #1a1208;
+    --brown: #3d2b1f;
+    --muted: #7a6a5a;
+    --accent: #e05c3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--deep); line-height: 1.7; }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 16px 5%; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,246,240,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,150,58,0.15);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; font-style: italic; color: var(--gold); text-decoration: none; }
+  .logo span { color: var(--deep); }
+  .back-link { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+  .container { max-width: 780px; margin: 0 auto; padding: 120px 5% 80px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--deep);
+    margin-bottom: 8px;
+  }
+  .page-title em { font-style: italic; color: var(--gold); }
+  .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid rgba(201,150,58,0.2); }
+  .toc { background: var(--warm-white); border: 1px solid rgba(201,150,58,0.2); border-radius: 16px; padding: 28px 32px; margin-bottom: 48px; }
+  .toc h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--gold); margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: var(--brown); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .toc a:hover { color: var(--gold); }
+  .doc-section { margin-bottom: 48px; }
+  .section-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--deep); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(201,150,58,0.15); }
+  h3 { font-size: 1rem; font-weight: 700; color: var(--brown); margin: 20px 0 8px; }
+  p { margin-bottom: 14px; font-size: 0.95rem; color: var(--brown); }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { font-size: 0.95rem; color: var(--brown); margin-bottom: 6px; }
+  .highlight-box { background: rgba(201,150,58,0.08); border-left: 4px solid var(--gold); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 20px 0; }
+  .highlight-box p { margin: 0; font-size: 0.9rem; }
+  .divider { border: none; border-top: 2px solid rgba(201,150,58,0.15); margin: 64px 0 48px; }
+  .privacy-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: var(--deep); margin-bottom: 8px; }
+  .privacy-title em { font-style: italic; color: var(--gold); }
+  footer { background: var(--deep); color: rgba(250,246,240,0.4); padding: 40px 5%; text-align: center; font-size: 0.85rem; margin-top: 80px; }
+  footer a { color: var(--gold); text-decoration: none; }
+  @media (max-width: 640px) { .container { padding: 100px 4% 60px; } }
+</style>
 </head>
 <body>
-  <h1>Regulamin</h1>
-  <p>Tu wstaw regulamin...</p>
+
+<nav>
+  <a href="index.html" class="logo"><em>Nuta</em><span>NaŻyczenie</span></a>
+  <a href="index.html" class="back-link">← Wróć do strony głównej</a>
+</nav>
+
+<div class="container">
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  REGULAMIN                            -->
+  <!-- ══════════════════════════════════════ -->
+
+  <div class="section-num">Dokument prawny</div>
+  <h1 class="page-title"><em>Regulamin</em> Sklepu</h1>
+  <p class="subtitle">Obowiązuje od: 1 stycznia 2026 r. &nbsp;·&nbsp; Ostatnia aktualizacja: 1 stycznia 2026 r. &nbsp;·&nbsp; Właściciel serwisu: NutaNaŻyczenie, nutanazyczenie.pl</p>
+
+  <div class="toc">
+    <h3>Spis treści</h3>
+    <ol>
+      <li><a href="#r1">Postanowienia ogólne</a></li>
+      <li><a href="#r2">Definicje</a></li>
+      <li><a href="#r3">Rodzaje i zakres usług</a></li>
+      <li><a href="#r4">Warunki składania zamówień</a></li>
+      <li><a href="#r5">Ceny i płatności</a></li>
+      <li><a href="#r6">Realizacja zamówień i dostawa</a></li>
+      <li><a href="#r7">Produkty na indywidualne zamówienie — brak prawa do odstąpienia</a></li>
+      <li><a href="#r8">Prawa autorskie</a></li>
+      <li><a href="#r9">Reklamacje i poprawki</a></li>
+      <li><a href="#r10">Odpowiedzialność</a></li>
+      <li><a href="#r11">Postanowienia końcowe</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-section" id="r1">
+    <div class="section-num">§ 1</div>
+    <h2>Postanowienia ogólne</h2>
+    <p>1. Niniejszy Regulamin określa zasady korzystania ze sklepu internetowego dostępnego pod adresem <strong>nutanazyczenie.pl</strong> (dalej: „Sklep"), prowadzonego przez właściciela serwisu NutaNaŻyczenie (dalej: „Sprzedawca").</p>
+    <p>2. Korzystanie ze Sklepu, w tym składanie zamówień, jest równoznaczne z akceptacją niniejszego Regulaminu w całości.</p>
+    <p>3. Regulamin jest dostępny nieodpłatnie na stronie Sklepu w formie umożliwiającej jego pobranie, utrwalenie i wydrukowanie.</p>
+    <p>4. Sklep prowadzi sprzedaż produktów cyfrowych tworzonych na indywidualne zamówienie za pośrednictwem sieci Internet.</p>
+    <p>5. W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego, ustawy z dnia 30 maja 2014 r. o prawach konsumenta (Dz.U. 2014 poz. 827 z późn. zm.) oraz ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych.</p>
+  </div>
+
+  <div class="doc-section" id="r2">
+    <div class="section-num">§ 2</div>
+    <h2>Definicje</h2>
+    <ul>
+      <li><strong>Sklep</strong> — serwis internetowy prowadzony pod adresem nutanazyczenie.pl.</li>
+      <li><strong>Sprzedawca</strong> — właściciel i operator Sklepu NutaNaŻyczenie.</li>
+      <li><strong>Klient</strong> — osoba fizyczna posiadająca pełną zdolność do czynności prawnych, osoba prawna lub jednostka organizacyjna nieposiadająca osobowości prawnej, która składa Zamówienie w Sklepie.</li>
+      <li><strong>Konsument</strong> — Klient będący osobą fizyczną, dokonujący zakupu niezwiązanego bezpośrednio z jego działalnością gospodarczą lub zawodową.</li>
+      <li><strong>Zamówienie</strong> — oświadczenie woli Klienta składane za pomocą formularza na stronie Sklepu, zmierzające bezpośrednio do zawarcia umowy o świadczenie usług.</li>
+      <li><strong>Produkt</strong> — spersonalizowany utwór muzyczny i/lub audiowizualny tworzony przez Sprzedawcę na indywidualne zamówienie Klienta, w szczególności: piosenka (plik MP3 + plik PDF z tekstem), wideo ze zdjęć z podkładem muzycznym, krótki wiersz (plik PDF).</li>
+      <li><strong>Umowa</strong> — umowa o świadczenie usług zawarta między Klientem a Sprzedawcą za pośrednictwem Sklepu.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="r3">
+    <div class="section-num">§ 3</div>
+    <h2>Rodzaje i zakres usług</h2>
+    <p>1. Sklep oferuje następujące pakiety produktów:</p>
+    <ul>
+      <li><strong>Pakiet Piosenka (39 zł)</strong> — spersonalizowana piosenka z tekstem i muzyką generowaną przez AI (plik MP3 + PDF z tekstem) oraz gratis: krótki wiersz (4 wersy, plik PDF). W cenie 1 bezpłatna poprawka.</li>
+      <li><strong>Pakiet Piosenka + Wideo (69 zł)</strong> — piosenka jak wyżej oraz film wideo ze zdjęć przesłanych przez Klienta z animowanym tekstem i podkładem muzycznym, a także gratis: krótki wiersz (4 wersy, plik PDF). W cenie 1 bezpłatna poprawka.</li>
+      <li><strong>Pakiet Premium (99 zł)</strong> — dwie spersonalizowane piosenki, dwa filmy wideo ze zdjęć oraz gratis: krótki wiersz (4 wersy, plik PDF). W cenie 2 bezpłatne poprawki. Priorytetowa realizacja do 12 godzin.</li>
+    </ul>
+    <p>2. Wszystkie Produkty tworzone są na indywidualne zamówienie Klienta i mają charakter spersonalizowany.</p>
+    <p>3. Produkty dostarczane są wyłącznie w formie cyfrowej na wskazany przez Klienta adres e-mail.</p>
+  </div>
+
+  <div class="doc-section" id="r4">
+    <div class="section-num">§ 4</div>
+    <h2>Warunki składania zamówień</h2>
+    <p>1. Zamówienia można składać przez całą dobę, 7 dni w tygodniu, za pośrednictwem formularza zamówienia dostępnego na stronie Sklepu.</p>
+    <p>2. Warunkiem złożenia zamówienia jest:</p>
+    <ul>
+      <li>wypełnienie wszystkich wymaganych pól formularza zamówienia,</li>
+      <li>podanie prawidłowego adresu e-mail,</li>
+      <li>zaakceptowanie niniejszego Regulaminu,</li>
+      <li>dokonanie płatności za zamówienie.</li>
+    </ul>
+    <p>3. Klient jest zobowiązany do podania prawdziwych, aktualnych i kompletnych danych w formularzu zamówienia. Sprzedawca nie ponosi odpowiedzialności za skutki podania błędnych danych, w szczególności błędnego adresu e-mail.</p>
+    <p>4. Po złożeniu zamówienia i zaksięgowaniu płatności Klient otrzymuje na podany adres e-mail potwierdzenie przyjęcia zamówienia do realizacji.</p>
+    <p>5. Umowa zostaje zawarta z chwilą zaksięgowania płatności i wysłania potwierdzenia zamówienia na adres e-mail Klienta.</p>
+  </div>
+
+  <div class="doc-section" id="r5">
+    <div class="section-num">§ 5</div>
+    <h2>Ceny i płatności</h2>
+    <p>1. Wszystkie ceny podane w Sklepie są cenami brutto wyrażonymi w złotych polskich (PLN) i zawierają wszystkie należne podatki.</p>
+    <p>2. Sprzedawca zastrzega sobie prawo do zmiany cen Produktów, wprowadzania i odwoływania promocji. Zmiany cen nie dotyczą zamówień już złożonych i opłaconych.</p>
+    <p>3. Płatności realizowane są za pośrednictwem bezpiecznego systemu płatności elektronicznych. Akceptowane metody płatności to: karta debetowa/kredytowa, BLIK oraz inne metody dostępne w systemie płatności.</p>
+    <p>4. Realizacja zamówienia rozpoczyna się po zaksięgowaniu płatności.</p>
+    <p>5. Sprzedawca wystawia dokument sprzedaży (paragon lub fakturę) na żądanie Klienta, przesyłany drogą elektroniczną na podany adres e-mail.</p>
+  </div>
+
+  <div class="doc-section" id="r6">
+    <div class="section-num">§ 6</div>
+    <h2>Realizacja zamówień i dostawa</h2>
+    <p>1. Zamówienia realizowane są w następujących terminach:</p>
+    <ul>
+      <li>Pakiet Piosenka — do 24 godzin od zaksięgowania płatności,</li>
+      <li>Pakiet Piosenka + Wideo — do 24 godzin od zaksięgowania płatności,</li>
+      <li>Pakiet Premium — do 12 godzin od zaksięgowania płatności (realizacja priorytetowa).</li>
+    </ul>
+    <p>2. Terminy realizacji podane są orientacyjnie. W wyjątkowych przypadkach (np. awaria systemu, dni ustawowo wolne od pracy) termin realizacji może ulec wydłużeniu, o czym Klient zostanie niezwłocznie poinformowany drogą elektroniczną.</p>
+    <p>3. Gotowy Produkt dostarczany jest na adres e-mail wskazany w formularzu zamówienia — Klienta lub bezpośrednio osoby obdarowywanej, zgodnie z wyborem dokonanym przy składaniu zamówienia.</p>
+    <p>4. W przypadku Pakietu Piosenka + Wideo oraz Pakietu Premium, Klient jest zobowiązany do przesłania zdjęć w terminie 24 godzin od złożenia zamówienia. Nieprzesłanie zdjęć w tym terminie może skutkować opóźnieniem realizacji.</p>
+    <p>5. Sprzedawca nie ponosi odpowiedzialności za niedostarczenie Produktu z przyczyn leżących po stronie Klienta, w szczególności w przypadku podania błędnego adresu e-mail lub trafienia wiadomości do folderu SPAM.</p>
+  </div>
+
+  <div class="doc-section" id="r7">
+    <div class="section-num">§ 7</div>
+    <h2>Produkty na indywidualne zamówienie — brak prawa do odstąpienia od umowy</h2>
+
+    <div class="highlight-box">
+      <p><strong>Ważna informacja dla Konsumentów:</strong> Zgodnie z art. 38 pkt 3 ustawy z dnia 30 maja 2014 r. o prawach konsumenta, prawo do odstąpienia od umowy zawartej na odległość nie przysługuje Konsumentowi w odniesieniu do umów, w których przedmiotem świadczenia jest rzecz nieprefabrykowana, wyprodukowana według specyfikacji Konsumenta lub służąca zaspokojeniu jego zindywidualizowanych potrzeb.</p>
+    </div>
+
+    <p>1. Wszystkie Produkty oferowane w Sklepie są tworzone na indywidualne zamówienie Klienta, w oparciu o dane osobowe i informacje przekazane przez Klienta w formularzu zamówienia. Każdy Produkt jest niepowtarzalny i spersonalizowany — stworzony wyłącznie dla konkretnego Klienta i wskazanej przez niego osoby.</p>
+    <p>2. Z uwagi na powyższe, <strong>Konsumentowi nie przysługuje prawo do odstąpienia od umowy w terminie 14 dni</strong>, o którym mowa w art. 27 ustawy o prawach konsumenta. Powyższe wyłączenie ma zastosowanie w oparciu o art. 38 pkt 3 ww. ustawy — dostarczanie treści cyfrowych niezapisanych na nośniku materialnym, jeżeli spełnianie świadczenia rozpoczęło się za wyraźną zgodą Konsumenta przed upływem terminu do odstąpienia od umowy i po poinformowaniu go przez Sprzedawcę o utracie prawa odstąpienia.</p>
+    <p>3. Składając zamówienie i akceptując niniejszy Regulamin, Klient wyraża zgodę na rozpoczęcie realizacji zamówienia niezwłocznie po zaksięgowaniu płatności i przyjmuje do wiadomości utratę prawa do odstąpienia od umowy.</p>
+    <p>4. Produkty nie podlegają zwrotowi ani wymianie po ich wytworzeniu i dostarczeniu, z wyjątkiem przypadków opisanych w § 9 (Reklamacje).</p>
+  </div>
+
+  <div class="doc-section" id="r8">
+    <div class="section-num">§ 8</div>
+    <h2>Prawa autorskie</h2>
+    <p>1. Z chwilą zaksięgowania płatności i dostarczenia Produktu, Klient nabywa niewyłączną licencję do korzystania z zakupionego Produktu (tekstu piosenki, nagrania muzycznego, pliku wideo, wiersza) na następujących polach eksploatacji:</p>
+    <ul>
+      <li>odtwarzanie i odtwarzanie publiczne w gronie prywatnym,</li>
+      <li>udostępnianie w mediach społecznościowych (Facebook, Instagram, TikTok i inne) w celach niekomercyjnych,</li>
+      <li>przesyłanie i odtwarzanie przez osoby bliskie Klienta.</li>
+    </ul>
+    <p>2. Klient nie nabywa prawa do:</p>
+    <ul>
+      <li>komercyjnego wykorzystania Produktu (np. sprzedaży, licencjonowania osobom trzecim),</li>
+      <li>modyfikowania i rozpowszechniania zmodyfikowanych wersji Produktu bez zgody Sprzedawcy,</li>
+      <li>rejestrowania Produktu w organizacjach zbiorowego zarządzania prawami autorskimi.</li>
+    </ul>
+    <p>3. Sprzedawca oświadcza, że tworzone Produkty nie naruszają praw autorskich osób trzecich. Muzyka generowana jest przy użyciu narzędzi AI, a teksty tworzone są oryginalnie na zamówienie Klienta.</p>
+
+    <div class="highlight-box">
+      <p><strong>Prawo Sprzedawcy do promocji:</strong> Sprzedawca zastrzega sobie prawo do wykorzystania wybranych fragmentów lub całości stworzonych Produktów (w tym fragmentów tekstu, muzyki lub wideo) w celach promocyjnych i marketingowych — w szczególności na profilach społecznościowych Sklepu (Instagram, TikTok, Facebook) oraz w materiałach reklamowych. Dane osobowe osób obdarowywanych nie będą ujawniane bez zgody Klienta. W przypadku sprzeciwu wobec wykorzystania Produktu w celach promocyjnych, Klient powinien poinformować Sprzedawcę o tym fakcie najpóźniej w momencie składania zamówienia, wpisując stosowną adnotację w polu „dodatkowe informacje" formularza.</p>
+    </div>
+
+    <p>4. Klient, przesyłając zdjęcia w celu realizacji zamówienia (Pakiet Piosenka + Wideo, Pakiet Premium), oświadcza, że posiada prawa do udostępnienia tych zdjęć Sprzedawcy oraz że ich wykorzystanie nie narusza praw osób trzecich. Zdjęcia przechowywane są wyłącznie przez czas niezbędny do realizacji zamówienia i usuwane po jego zakończeniu.</p>
+  </div>
+
+  <div class="doc-section" id="r9">
+    <div class="section-num">§ 9</div>
+    <h2>Reklamacje i poprawki</h2>
+    <p>1. Każde zamówienie objęte jest bezpłatnymi poprawkami: Pakiet Piosenka — 1 poprawka, Pakiet Piosenka + Wideo — 1 poprawka, Pakiet Premium — 2 poprawki.</p>
+    <p>2. Poprawka polega na modyfikacji treści Produktu zgodnie ze wskazówkami Klienta przesłanymi na adres e-mail Sprzedawcy w terminie 7 dni od dostarczenia Produktu.</p>
+    <p>3. Klient ma prawo złożyć reklamację, jeżeli dostarczony Produkt jest niezgodny z opisem zamówienia lub posiada wady techniczne uniemożliwiające jego odtworzenie.</p>
+    <p>4. Reklamację należy złożyć drogą elektroniczną na adres: <strong>kontakt@nutanazyczenie.pl</strong>, podając: numer zamówienia, opis niezgodności lub wady oraz oczekiwany sposób rozpatrzenia reklamacji.</p>
+    <p>5. Sprzedawca rozpatruje reklamację w terminie 14 dni roboczych od jej otrzymania i informuje Klienta o wyniku drogą elektroniczną.</p>
+    <p>6. W przypadku uznania reklamacji Sprzedawca ponownie zrealizuje Produkt lub, w przypadku braku możliwości naprawienia wady, zwróci Klientowi uiszczoną opłatę.</p>
+  </div>
+
+  <div class="doc-section" id="r10">
+    <div class="section-num">§ 10</div>
+    <h2>Odpowiedzialność</h2>
+    <p>1. Sprzedawca dokłada wszelkich starań, aby Produkty były najwyższej jakości i zgodne z zamówieniem Klienta. Ze względu na kreatywny i subiektywny charakter tworzonych Produktów, Sprzedawca nie gwarantuje, że efekt końcowy w pełni odpowie oczekiwaniom estetycznym Klienta — służą temu bezpłatne poprawki.</p>
+    <p>2. Sprzedawca nie ponosi odpowiedzialności za:</p>
+    <ul>
+      <li>niedostarczenie Produktu z przyczyn leżących po stronie Klienta (błędny adres e-mail, filtry antyspamowe),</li>
+      <li>skutki podania przez Klienta nieprawdziwych lub niepełnych informacji w formularzu zamówienia,</li>
+      <li>przerwy w świadczeniu usług wynikające z konieczności konserwacji systemu lub awarii niezależnych od Sprzedawcy.</li>
+    </ul>
+    <p>3. Odpowiedzialność Sprzedawcy wobec Klientów niebędących Konsumentami ograniczona jest do wartości złożonego zamówienia.</p>
+  </div>
+
+  <div class="doc-section" id="r11">
+    <div class="section-num">§ 11</div>
+    <h2>Postanowienia końcowe</h2>
+    <p>1. Sprzedawca zastrzega sobie prawo do zmiany Regulaminu. Zmiany wchodzą w życie w terminie 14 dni od ich opublikowania na stronie Sklepu. Zmiany nie dotyczą zamówień złożonych przed ich wejściem w życie.</p>
+    <p>2. Wszelkie spory wynikające z umów zawartych za pośrednictwem Sklepu będą rozstrzygane przez sąd właściwy dla siedziby Sprzedawcy, z zastrzeżeniem przepisów o właściwości sądów w sprawach z udziałem Konsumentów.</p>
+    <p>3. Konsument ma możliwość skorzystania z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń, w szczególności przez Platformę ODR dostępną pod adresem: <a href="https://ec.europa.eu/consumers/odr" style="color:var(--gold)">ec.europa.eu/consumers/odr</a>.</p>
+    <p>4. Regulamin wchodzi w życie z dniem 1 stycznia 2026 r.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  POLITYKA PRYWATNOŚCI                -->
+  <!-- ══════════════════════════════════════ -->
+
+  <hr class="divider">
+
+  <div class="section-num">Dokument prawny</div>
+  <h1 class="privacy-title"><em>Polityka</em> Prywatności</h1>
+  <p class="subtitle">Obowiązuje od: 1 stycznia 2026 r. &nbsp;·&nbsp; Administrator danych: NutaNaŻyczenie, nutanazyczenie.pl</p>
+
+  <div class="doc-section">
+    <div class="section-num">§ 1</div>
+    <h2>Administrator danych osobowych</h2>
+    <p>Administratorem Twoich danych osobowych jest właściciel serwisu NutaNaŻyczenie, prowadzący działalność pod adresem nutanazyczenie.pl (dalej: „Administrator"). Kontakt z Administratorem w sprawach ochrony danych osobowych: <strong>kontakt@nutanazyczenie.pl</strong>.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 2</div>
+    <h2>Jakie dane zbieramy</h2>
+    <p>W związku ze świadczeniem usług Sklep przetwarza następujące dane osobowe:</p>
+    <ul>
+      <li><strong>Dane kontaktowe:</strong> imię, adres e-mail — w celu realizacji zamówienia i komunikacji,</li>
+      <li><strong>Dane zamówienia:</strong> informacje podane w formularzu (imię i opis osoby obdarowywanej, okazja, preferencje muzyczne) — niezbędne do stworzenia spersonalizowanego Produktu,</li>
+      <li><strong>Dane płatności:</strong> obsługiwane wyłącznie przez zewnętrznego operatora płatności — Sprzedawca nie przechowuje danych kart płatniczych,</li>
+      <li><strong>Zdjęcia:</strong> przesyłane przez Klienta wyłącznie w celu realizacji zamówień z pakietem wideo — przechowywane tylko przez czas realizacji zamówienia,</li>
+      <li><strong>Dane techniczne:</strong> adres IP, dane przeglądarki — zbierane automatycznie w celach statystycznych i bezpieczeństwa.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 3</div>
+    <h2>Podstawy i cele przetwarzania</h2>
+    <ul>
+      <li><strong>Art. 6 ust. 1 lit. b RODO</strong> — wykonanie umowy: przetwarzanie danych niezbędne do realizacji zamówienia i dostarczenia Produktu,</li>
+      <li><strong>Art. 6 ust. 1 lit. c RODO</strong> — obowiązek prawny: przechowywanie dokumentacji księgowej przez okres wymagany przepisami podatkowymi (5 lat),</li>
+      <li><strong>Art. 6 ust. 1 lit. f RODO</strong> — prawnie uzasadniony interes Administratora: marketing bezpośredni własnych usług, zapobieganie nadużyciom, statystyki,</li>
+      <li><strong>Art. 6 ust. 1 lit. a RODO</strong> — zgoda: wysyłka newslettera i informacji marketingowych (wyłącznie po wyrażeniu dobrowolnej zgody).</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 4</div>
+    <h2>Odbiorcy danych</h2>
+    <p>Twoje dane mogą być przekazywane następującym kategoriom odbiorców:</p>
+    <ul>
+      <li><strong>Operator płatności</strong> — w zakresie niezbędnym do obsługi transakcji,</li>
+      <li><strong>Dostawca usług e-mail</strong> (Resend.com) — w celu dostarczenia Produktu na podany adres e-mail,</li>
+      <li><strong>Dostawca hostingu</strong> (Vercel Inc.) — w zakresie niezbędnym do utrzymania serwisu,</li>
+      <li><strong>Narzędzia AI</strong> — dane z formularza (bez danych wrażliwych) przekazywane są do systemów generatywnej AI wyłącznie w celu stworzenia Produktu.</li>
+    </ul>
+    <p>Administrator nie sprzedaje danych osobowych podmiotom trzecim.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 5</div>
+    <h2>Okres przechowywania danych</h2>
+    <ul>
+      <li><strong>Dane zamówienia</strong> — przez okres 5 lat od końca roku, w którym zawarto umowę (wymóg przepisów podatkowych),</li>
+      <li><strong>Zdjęcia przesłane do realizacji wideo</strong> — usuwane niezwłocznie po dostarczeniu gotowego Produktu, nie później niż w ciągu 30 dni,</li>
+      <li><strong>Dane marketingowe</strong> — do czasu cofnięcia zgody lub wniesienia sprzeciwu,</li>
+      <li><strong>Dane techniczne (logi)</strong> — przez okres 90 dni.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 6</div>
+    <h2>Twoje prawa</h2>
+    <p>Na podstawie przepisów RODO przysługują Ci następujące prawa:</p>
+    <ul>
+      <li><strong>Prawo dostępu</strong> — możesz zażądać informacji o przetwarzanych danych,</li>
+      <li><strong>Prawo do sprostowania</strong> — możesz żądać poprawienia nieprawidłowych danych,</li>
+      <li><strong>Prawo do usunięcia</strong> — możesz żądać usunięcia danych („prawo do bycia zapomnianym"), z zastrzeżeniem obowiązków prawnych Administratora,</li>
+      <li><strong>Prawo do ograniczenia przetwarzania</strong> — możesz żądać ograniczenia przetwarzania w określonych przypadkach,</li>
+      <li><strong>Prawo do przenoszenia danych</strong> — możesz otrzymać swoje dane w ustrukturyzowanym formacie,</li>
+      <li><strong>Prawo do sprzeciwu</strong> — możesz wnieść sprzeciw wobec przetwarzania na podstawie prawnie uzasadnionego interesu,</li>
+      <li><strong>Prawo do cofnięcia zgody</strong> — w każdej chwili, bez wpływu na zgodność z prawem przetwarzania przed cofnięciem.</li>
+    </ul>
+    <p>Aby skorzystać z powyższych praw, skontaktuj się z Administratorem: <strong>kontakt@nutanazyczenie.pl</strong>. Administrator odpowiada w terminie 30 dni. Masz również prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (uodo.gov.pl).</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 7</div>
+    <h2>Pliki cookies</h2>
+    <p>1. Sklep używa plików cookies (ciasteczek) — małych plików tekstowych zapisywanych na urządzeniu użytkownika.</p>
+    <p>2. Stosowane są następujące rodzaje cookies:</p>
+    <ul>
+      <li><strong>Niezbędne</strong> — konieczne do prawidłowego działania serwisu (np. sesja, bezpieczeństwo),</li>
+      <li><strong>Analityczne</strong> — pozwalają mierzyć ruch i sposób korzystania ze strony (np. Google Analytics — tylko za zgodą),</li>
+      <li><strong>Marketingowe</strong> — służą personalizacji reklam (tylko za zgodą).</li>
+    </ul>
+    <p>3. Możesz zarządzać plikami cookies poprzez ustawienia swojej przeglądarki. Wyłączenie cookies niezbędnych może uniemożliwić prawidłowe działanie Sklepu.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 8</div>
+    <h2>Bezpieczeństwo danych</h2>
+    <p>Administrator stosuje odpowiednie środki techniczne i organizacyjne w celu ochrony danych osobowych przed nieuprawnionym dostępem, utratą lub zniszczeniem, w tym szyfrowanie SSL/TLS dla transmisji danych oraz regularne aktualizacje systemów bezpieczeństwa.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="section-num">§ 9</div>
+    <h2>Zmiany Polityki Prywatności</h2>
+    <p>Administrator zastrzega sobie prawo do aktualizacji niniejszej Polityki Prywatności. O istotnych zmianach Klienci zostaną poinformowani drogą elektroniczną lub poprzez komunikat na stronie Sklepu. Data ostatniej aktualizacji widnieje na początku dokumentu.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div style="margin-bottom:12px; font-family:'Playfair Display',serif; font-size:1.2rem; font-style:italic; color: #c9963a;">NutaNaŻyczenie</div>
+  © 2026 NutaNaŻyczenie. Wszelkie prawa zastrzeżone. &nbsp;·&nbsp;
+  <a href="index.html">Strona główna</a> &nbsp;·&nbsp;
+  <a href="mailto:kontakt@nutanazyczenie.pl">kontakt@nutanazyczenie.pl</a>
+</footer>
+
 </body>
 </html>

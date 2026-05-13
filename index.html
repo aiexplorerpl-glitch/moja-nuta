@@ -3,178 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NutaNaŻyczenie — Już wkrótce</title>
-<meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>NutaNaŻyczenie — Spersonalizowane Piosenki i Wideo AI na każdą okazję</title>
+<meta name="description" content="Zamów spersonalizowaną piosenkę i wideo AI dla bliskiej osoby. Na urodziny, ślub, imieniny i każdą wyjątkową okazję. Od 29 zł, realizacja już w 3h.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="NutaNaŻyczenie">
+
+<!-- Open Graph (Facebook, Instagram Ads) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nutanazyczenie.pl/">
+<meta property="og:title" content="NutaNaŻyczenie — Spersonalizowane Piosenki i Wideo AI">
+<meta property="og:description" content="Unikalny prezent na każdą okazję — piosenka i wideo AI stworzone specjalnie dla Twojej bliskiej osoby. Od 29 zł, gotowe już w 3h.">
+<meta property="og:image" content="https://nutanazyczenie.pl/og-image.jpg">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="NutaNaŻyczenie">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NutaNaŻyczenie — Spersonalizowane Piosenki i Wideo AI">
+<meta name="twitter:description" content="Unikalny prezent na każdą okazję — od 29 zł, gotowe już w 3h.">
+<meta name="twitter:image" content="https://nutanazyczenie.pl/og-image.jpg">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://nutanazyczenie.pl/">
+
+<!-- Structured Data (Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NutaNaŻyczenie",
+  "description": "Spersonalizowane piosenki i wideo AI na każdą okazję",
+  "url": "https://nutanazyczenie.pl",
+  "email": "kontakt@nutanazyczenie.pl",
+  "priceRange": "39-99 PLN",
+  "currenciesAccepted": "PLN",
+  "paymentAccepted": "Credit Card, BLIK",
+  "areaServed": "PL",
+  "offers": [
+    {"@type":"Offer","name":"Piosenka","price":"39","priceCurrency":"PLN"},
+    {"@type":"Offer","name":"Piosenka + Wideo","price":"69","priceCurrency":"PLN"},
+    {"@type":"Offer","name":"Premium","price":"99","priceCurrency":"PLN"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF6F0;
-    --gold: #C9963A;
-    --gold-light: #E8B95A;
-    --deep: #1A1208;
-    --muted: #7A6A5A;
+    --cream: #faf6f0;
+    --warm-white: #fffdf9;
+    --gold: #c9963a;
+    --gold-light: #e8b95a;
+    --deep: #1a1208;
+    --brown: #3d2b1f;
+    --muted: #7a6a5a;
+    --accent: #e05c3a;
+    --pink: #f0a090;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { height:100%; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--deep);
-    color: var(--cream);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 18px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,246,240,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,150,58,0.15);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900; font-style: italic;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--deep); }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a {
+    text-decoration: none; color: var(--brown);
+    font-size: 0.9rem; font-weight: 500; letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: white !important;
+    padding: 10px 22px; border-radius: 100px;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
     min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center;
-    padding: 40px 5%;
-    overflow: hidden;
+    padding: 120px 5% 80px;
     position: relative;
+    overflow: hidden;
   }
-
-  /* Tło z gradientem */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
+  .hero-bg {
+    position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,150,58,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(224,92,58,0.07) 0%, transparent 60%);
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,150,58,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(224,92,58,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 10% 60%, rgba(201,150,58,0.06) 0%, transparent 60%);
+  }
+  .hero-notes {
+    position: absolute; inset: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .note {
+    position: absolute;
+    font-size: 1.5rem; opacity: 0.12;
+    animation: floatNote linear infinite;
+    color: var(--gold);
+  }
+  @keyframes floatNote {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.12; }
+    90% { opacity: 0.08; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
   }
 
-  .wrap { position: relative; z-index: 1; max-width: 560px; }
-
-  /* Logo SVG */
-  .logo-wrap { margin-bottom: 40px; display: flex; justify-content: center; }
-
-  /* Animacje orbity */
-  @keyframes spinCW  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-  @keyframes spinCCW { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
-  @keyframes starFloat { 0%,100%{transform:translateY(0) scale(1);opacity:.8} 50%{transform:translateY(-4px) scale(1.2);opacity:1} }
-  @keyframes glowPulse { 0%,100%{filter:drop-shadow(0 0 6px rgba(201,150,58,.4))} 50%{filter:drop-shadow(0 0 18px rgba(201,150,58,.8))} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  .cs-spin-cw  { animation: spinCW  8s linear infinite; transform-origin: 55px 55px; }
-  .cs-spin-ccw { animation: spinCCW 12s linear infinite; transform-origin: 55px 55px; }
-  .cs-glow     { animation: glowPulse 3s ease-in-out infinite; }
-  .cs-s1 { animation: starFloat 2.5s ease-in-out infinite;      transform-origin: 55px 8px; }
-  .cs-s2 { animation: starFloat 3.2s ease-in-out infinite .8s;  transform-origin: 102px 55px; }
-  .cs-s3 { animation: starFloat 2.8s ease-in-out infinite 1.5s; transform-origin: 55px 102px; }
-  .cs-s4 { animation: starFloat 3.5s ease-in-out infinite 2.2s; transform-origin: 8px 55px; }
-
-  .tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 300; font-style: italic;
-    color: var(--gold-light);
-    line-height: 1.2; margin-bottom: 20px;
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,150,58,0.12); border: 1px solid rgba(201,150,58,0.3);
+    color: var(--gold); padding: 8px 18px; border-radius: 100px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 28px;
     animation: fadeUp 0.8s ease both;
   }
-  .tagline strong { font-weight: 600; color: var(--cream); }
-
-  .subtitle {
-    font-size: 1rem; color: var(--muted);
-    line-height: 1.7; margin-bottom: 40px;
-    animation: fadeUp 0.8s 0.15s ease both;
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--deep);
+    max-width: 800px;
+    animation: fadeUp 0.8s 0.1s ease both;
   }
-
-  /* Countdown */
-  .countdown-wrap {
-    display: flex; gap: 20px; justify-content: center;
-    margin-bottom: 44px;
-    animation: fadeUp 0.8s 0.25s ease both;
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
   }
-  .cd-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,150,58,0.2);
-    border-radius: 14px; padding: 16px 20px; min-width: 70px;
+  .hero-sub {
+    margin-top: 24px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted); max-width: 540px; line-height: 1.7;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
   }
-  .cd-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 600; color: var(--gold-light);
-    line-height: 1;
+  .hero-actions {
+    margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.8s 0.3s ease both;
   }
-  .cd-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
-
-  /* Notify form */
-  .notify-wrap {
-    animation: fadeUp 0.8s 0.35s ease both;
-    margin-bottom: 40px;
+  .btn-primary {
+    background: var(--gold); color: white;
+    padding: 16px 36px; border-radius: 100px;
+    font-size: 1rem; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 24px rgba(201,150,58,0.35);
   }
-  .notify-label {
-    font-size: 0.85rem; color: var(--muted);
-    margin-bottom: 12px;
-  }
-  .notify-row {
-    display: flex; gap: 10px; max-width: 400px; margin: 0 auto;
-  }
-  .notify-input {
-    flex: 1; padding: 13px 18px;
-    background: rgba(255,255,255,0.05);
-    border: 1.5px solid rgba(201,150,58,0.2);
-    border-radius: 100px; color: var(--cream);
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s;
-  }
-  .notify-input:focus { border-color: var(--gold); }
-  .notify-input::placeholder { color: rgba(250,246,240,0.3); }
-  .notify-btn {
-    background: var(--gold); color: white; border: none;
-    padding: 13px 22px; border-radius: 100px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    font-weight: 500; cursor: pointer; transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .notify-btn:hover { background: #E05C3A; transform: scale(1.02); }
-  .notify-success {
-    display: none; color: var(--gold); font-size: 0.9rem; margin-top: 10px;
-  }
-
-  /* Social links */
-  .socials {
-    display: flex; gap: 16px; justify-content: center;
-    animation: fadeUp 0.8s 0.45s ease both;
-  }
-  .social-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: var(--muted); text-decoration: none; font-size: 0.82rem;
-    border: 1px solid rgba(201,150,58,0.12);
-    padding: 8px 16px; border-radius: 100px;
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(224,92,58,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--brown);
+    padding: 16px 36px; border-radius: 100px;
+    font-size: 1rem; font-weight: 500; text-decoration: none;
+    border: 1.5px solid rgba(61,43,31,0.25);
     transition: all 0.2s;
   }
-  .social-link:hover { color: var(--gold); border-color: rgba(201,150,58,0.4); }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
 
-  .footer-note {
-    position: fixed; bottom: 24px;
-    font-size: 0.75rem; color: rgba(122,106,90,0.4);
-    letter-spacing: 1px;
+  .hero-stats {
+    margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900; color: var(--deep);
+  }
+  .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Floating notes bg */
-  .float-note {
-    position: fixed; font-size: 1.2rem;
-    color: rgba(201,150,58,0.06); pointer-events: none;
-    animation: floatUp linear infinite;
+  /* ─── HOW IT WORKS ─── */
+  .section { padding: 100px 5%; }
+  .section-label {
+    text-align: center; font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
   }
-  @keyframes floatUp {
-    from { transform: translateY(110vh) rotate(0deg); opacity:0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 0.5; }
-    to   { transform: translateY(-100px) rotate(360deg); opacity:0; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
+    text-align: center; color: var(--deep);
+    line-height: 1.15;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px; margin-top: 64px; max-width: 900px; margin-left: auto; margin-right: auto;
+  }
+  .step {
+    background: var(--warm-white);
+    border: 1px solid rgba(201,150,58,0.15);
+    border-radius: 20px; padding: 36px 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .step:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(201,150,58,0.15); }
+  .step-num {
+    position: absolute; top: -14px; left: 28px;
+    background: var(--gold); color: white;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 14px; border-radius: 100px;
+  }
+  .step-icon { font-size: 2.4rem; margin-bottom: 16px; }
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--deep);
+  }
+  .step p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+  /* ─── PRODUCTS ─── */
+  .products-bg { background: var(--deep); }
+  .products-bg .section-label { color: var(--gold-light); }
+  .products-bg .section-title { color: var(--cream); }
+
+  .products {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px; margin-top: 64px; max-width: 960px; margin-left: auto; margin-right: auto;
+  }
+  .product-card {
+    border: 1px solid rgba(201,150,58,0.25);
+    border-radius: 24px; padding: 44px 36px;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s;
+    background: rgba(255,255,255,0.03);
+  }
+  .product-card:hover { transform: translateY(-4px); }
+  .product-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201,150,58,0.12), rgba(201,150,58,0.04));
+  }
+  .product-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: var(--gold); color: var(--deep);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 12px; border-radius: 100px; text-transform: uppercase;
+  }
+  .product-icon { font-size: 3rem; margin-bottom: 20px; }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900; color: var(--cream); margin-bottom: 10px;
+  }
+  .product-desc { font-size: 0.9rem; color: rgba(250,246,240,0.55); line-height: 1.65; margin-bottom: 28px; }
+  .product-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 900; color: var(--gold);
+    line-height: 1;
+  }
+  .product-price span { font-size: 1rem; color: rgba(250,246,240,0.4); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+  .product-features { margin-top: 20px; list-style: none; }
+  .product-features li {
+    font-size: 0.85rem; color: rgba(250,246,240,0.6);
+    padding: 6px 0; display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .product-features li:last-child { border-bottom: none; }
+  .product-features li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+  .btn-order {
+    display: block; text-align: center;
+    margin-top: 32px; padding: 14px;
+    background: var(--gold); color: white;
+    border-radius: 100px; text-decoration: none;
+    font-weight: 500; font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .btn-order:hover { background: var(--accent); transform: scale(1.02); }
+
+  /* ─── OCCASIONS ─── */
+  .occasions {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center; margin-top: 48px;
+  }
+  .occasion-tag {
+    background: var(--warm-white); border: 1px solid rgba(201,150,58,0.2);
+    color: var(--brown); padding: 10px 22px; border-radius: 100px;
+    font-size: 0.9rem; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .occasion-tag:hover { background: var(--gold); color: white; border-color: var(--gold); }
+
+  /* ─── ORDER FORM ─── */
+  #zamow { background: var(--warm-white); }
+  .form-container {
+    max-width: 680px; margin: 64px auto 0;
+    background: white;
+    border: 1px solid rgba(201,150,58,0.2);
+    border-radius: 28px; padding: 56px 48px;
+    box-shadow: 0 8px 48px rgba(201,150,58,0.1);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { margin-bottom: 22px; }
+  .form-group label {
+    display: block; font-size: 0.82rem; font-weight: 500;
+    color: var(--brown); margin-bottom: 8px; letter-spacing: 0.3px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 14px 18px;
+    border: 1.5px solid rgba(61,43,31,0.12);
+    border-radius: 12px; font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--deep); background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,150,58,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .type-selector { display: flex; gap: 12px; margin-bottom: 22px; }
+  .type-btn {
+    flex: 1; padding: 14px; border: 1.5px solid rgba(61,43,31,0.12);
+    border-radius: 12px; background: var(--cream);
+    cursor: pointer; text-align: center; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .type-btn.active { border-color: var(--gold); background: rgba(201,150,58,0.08); color: var(--gold); }
+  .type-btn:hover { border-color: var(--gold); }
+  .type-btn-icon { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+  .type-btn-label { font-size: 0.85rem; font-weight: 500; }
+
+  .price-display {
+    background: linear-gradient(135deg, var(--deep), #2a1a10);
+    color: white; border-radius: 16px; padding: 24px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px;
+  }
+  .price-display-label { font-size: 0.85rem; opacity: 0.6; }
+  .price-display-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900; color: var(--gold);
+  }
+
+  .btn-submit {
+    width: 100%; padding: 18px;
+    background: var(--gold); color: white; border: none;
+    border-radius: 100px; font-size: 1.05rem; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 24px rgba(201,150,58,0.35);
+  }
+  .btn-submit:hover { background: var(--accent); transform: translateY(-2px); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; margin-top: 56px; max-width: 960px; margin-left: auto; margin-right: auto;
+  }
+  .testimonial {
+    background: var(--warm-white); border: 1px solid rgba(201,150,58,0.15);
+    border-radius: 20px; padding: 32px 28px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; color: var(--gold); opacity: 0.3;
+    position: absolute; top: 12px; left: 20px; line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 0.95rem; color: var(--brown); line-height: 1.7;
+    margin-top: 16px; font-style: italic;
+  }
+  .testimonial-author {
+    margin-top: 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .testimonial-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .testimonial-name { font-size: 0.88rem; font-weight: 500; color: var(--deep); }
+  .testimonial-occasion { font-size: 0.78rem; color: var(--muted); }
+  .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 4px; }
+
+  /* ─── FAQ ─── */
+  .faq-list { max-width: 680px; margin: 56px auto 0; }
+  .faq-item {
+    border-bottom: 1px solid rgba(61,43,31,0.1); padding: 24px 0;
+    cursor: pointer;
+  }
+  .faq-question {
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 500; font-size: 1rem; color: var(--deep);
+  }
+  .faq-arrow { color: var(--gold); transition: transform 0.2s; font-size: 1.2rem; }
+  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+  .faq-answer {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-answer { max-height: 200px; padding-top: 12px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep); color: rgba(250,246,240,0.5);
+    padding: 56px 5% 32px; text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; font-style: italic;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-tagline { font-size: 0.9rem; margin-bottom: 40px; }
+  .footer-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+  .footer-links a { color: rgba(250,246,240,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.78rem; opacity: 0.35; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-container { padding: 36px 24px; }
+    .hero-stats { gap: 32px; }
+  }
+
+  /* ─── SUCCESS MESSAGE ─── */
+  .success-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(26,18,8,0.7); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+  }
+  .success-overlay.show { display: flex; }
+  .success-box {
+    background: var(--warm-white); border-radius: 28px;
+    padding: 56px 48px; text-align: center; max-width: 420px;
+    animation: fadeUp 0.4s ease;
+  }
+  .success-icon { font-size: 4rem; margin-bottom: 16px; }
+  .success-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; color: var(--deep); margin-bottom: 12px;
+  }
+  .success-box p { color: var(--muted); line-height: 1.65; margin-bottom: 28px; }
+  .btn-close {
+    background: var(--gold); color: white; border: none;
+    padding: 14px 36px; border-radius: 100px;
+    font-size: 0.95rem; cursor: pointer; font-family: 'DM Sans', sans-serif;
   }
 </style>
 </head>
 <body>
 
-<!-- Floating background notes -->
-<div id="floatNotes"></div>
-
-<div class="wrap">
-
-  <!-- Logo -->
-  <div class="logo-wrap">
-    <svg width="200" height="95" viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg">
+<!-- NAV -->
+<nav>
+  <a href="/" style="display:inline-flex; align-items:center; text-decoration:none;">
+    <svg width="220" height="68" viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg" style="display:block;">
       <defs>
-        <linearGradient id="csRb" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="navRb" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%"   stop-color="#FF7F7F"/>
           <stop offset="20%"  stop-color="#FFB347"/>
           <stop offset="40%"  stop-color="#FFE566"/>
@@ -182,134 +493,715 @@
           <stop offset="80%"  stop-color="#B8A4FF"/>
           <stop offset="100%" stop-color="#FF7F7F"/>
         </linearGradient>
-        <linearGradient id="csRb2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="navRb2" x1="100%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%"   stop-color="#FF9ECD" stop-opacity="0"/>
           <stop offset="50%"  stop-color="#FFD580"/>
           <stop offset="100%" stop-color="#57DEFF" stop-opacity="0"/>
         </linearGradient>
-        <linearGradient id="csNg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="navNg" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%"   stop-color="#FFF4CC"/>
           <stop offset="100%" stop-color="#C9963A"/>
         </linearGradient>
-        <filter id="csGlow">
+        <filter id="navGlow">
           <feGaussianBlur stdDeviation="2" result="b"/>
           <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
+        <style>
+          .nav-spin-cw  { animation: navSpinCW  9s linear infinite; transform-origin: 55px 55px; }
+          .nav-spin-ccw { animation: navSpinCCW 13s linear infinite; transform-origin: 55px 55px; }
+          .nav-glow { animation: navGlowP 3s ease-in-out infinite; }
+          .nav-s1 { animation: navSf 2.6s ease-in-out infinite;      transform-origin: 55px 8px; }
+          .nav-s2 { animation: navSf 3.3s ease-in-out infinite .7s;  transform-origin: 102px 55px; }
+          .nav-s3 { animation: navSf 2.9s ease-in-out infinite 1.4s; transform-origin: 55px 102px; }
+          .nav-s4 { animation: navSf 3.6s ease-in-out infinite 2.1s; transform-origin: 8px 55px; }
+          @keyframes navSpinCW  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+          @keyframes navSpinCCW { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+          @keyframes navGlowP   { 0%,100%{filter:drop-shadow(0 0 5px rgba(201,150,58,.4))} 50%{filter:drop-shadow(0 0 14px rgba(201,150,58,.8))} }
+          @keyframes navSf { 0%,100%{transform:translateY(0) scale(1);opacity:.8} 50%{transform:translateY(-2px) scale(1.2);opacity:1} }
+        </style>
       </defs>
       <!-- Rings -->
       <circle cx="55" cy="55" r="47" fill="rgba(255,255,255,0.015)"/>
-      <g class="cs-spin-cw">
-        <circle cx="55" cy="55" r="47" fill="none" stroke="url(#csRb)" stroke-width="2.5" stroke-dasharray="32 10 20 8" opacity="0.85"/>
+      <g class="nav-spin-cw">
+        <circle cx="55" cy="55" r="47" fill="none" stroke="url(#navRb)" stroke-width="2.5" stroke-dasharray="32 10 20 8" opacity="0.85"/>
       </g>
-      <g class="cs-spin-ccw">
-        <circle cx="55" cy="55" r="36" fill="none" stroke="url(#csRb2)" stroke-width="1.5" stroke-dasharray="22 18" opacity="0.55"/>
+      <g class="nav-spin-ccw">
+        <circle cx="55" cy="55" r="36" fill="none" stroke="url(#navRb2)" stroke-width="1.5" stroke-dasharray="22 18" opacity="0.55"/>
       </g>
-      <!-- Nuta — spójna ścieżka -->
-      <g class="cs-glow" filter="url(#csGlow)">
-        <ellipse cx="44" cy="70" rx="12" ry="8.5" fill="url(#csNg)" transform="rotate(-22 44 70)"/>
-        <path d="M 54,70 L 54,22 C 54,20 56,19 58,20 Q 80,27 78,44 Q 74,34 58,38 L 58,70 Z" fill="url(#csNg)"/>
+      <!-- Nuta — identyczna jak w coming_soon -->
+      <g class="nav-glow" filter="url(#navGlow)">
+        <ellipse cx="44" cy="70" rx="12" ry="8.5" fill="url(#navNg)" transform="rotate(-22 44 70)"/>
+        <path d="M 54,70 L 54,22 C 54,20 56,19 58,20 Q 80,27 78,44 Q 74,34 58,38 L 58,70 Z" fill="url(#navNg)"/>
       </g>
       <!-- Stars -->
-      <circle class="cs-s1" cx="55"  cy="8"   r="3.5" fill="#FFB347" opacity="0.9"/>
-      <circle class="cs-s2" cx="102" cy="55"  r="3"   fill="#57DEFF" opacity="0.85"/>
-      <circle class="cs-s3" cx="55"  cy="102" r="2.5" fill="#B8A4FF" opacity="0.8"/>
-      <circle class="cs-s4" cx="8"   cy="55"  r="2.5" fill="#FF9ECD" opacity="0.75"/>
-      <!-- Text -->
-      <text x="192" y="38" font-family="Georgia,serif" font-size="23" font-style="italic" font-weight="bold" fill="#FFF4CC" text-anchor="middle">Nuta</text>
-      <text x="192" y="63" font-family="Georgia,serif" font-size="23" font-style="italic" font-weight="bold" fill="#E8B95A" text-anchor="middle">NaŻyczenie</text>
-      <line x1="118" y1="71" x2="172" y2="71" stroke="rgba(201,150,58,0.28)" stroke-width="0.7"/>
-      <polygon points="192,68.5 194.5,71 192,73.5 189.5,71" fill="rgba(201,150,58,0.4)"/>
-      <line x1="212" y1="71" x2="266" y2="71" stroke="rgba(201,150,58,0.28)" stroke-width="0.7"/>
-      <text x="192" y="84" font-family="Arial,sans-serif" font-size="7" fill="rgba(201,150,58,0.5)" text-anchor="middle" letter-spacing="3">MUZYCZNE PREZENTY</text>
+      <circle class="nav-s1" cx="55"  cy="8"   r="3.5" fill="#FFB347" opacity="0.9"/>
+      <circle class="nav-s2" cx="102" cy="55"  r="3"   fill="#57DEFF" opacity="0.85"/>
+      <circle class="nav-s3" cx="55"  cy="102" r="2.5" fill="#B8A4FF" opacity="0.8"/>
+      <circle class="nav-s4" cx="8"   cy="55"  r="2.5" fill="#FF9ECD" opacity="0.75"/>
+      <!-- Tekst — ciemny, czytelny na jasnym tle nav -->
+      <text x="192" y="38" font-family="Georgia,serif" font-size="23" font-style="italic" font-weight="bold" fill="#1A0E04" text-anchor="middle">Nuta</text>
+      <text x="192" y="63" font-family="Georgia,serif" font-size="23" font-style="italic" font-weight="bold" fill="#8B5E0A" text-anchor="middle">NaŻyczenie</text>
+      <line x1="118" y1="71" x2="172" y2="71" stroke="rgba(139,94,26,0.3)" stroke-width="0.7"/>
+      <polygon points="192,68.5 194.5,71 192,73.5 189.5,71" fill="rgba(139,94,26,0.4)"/>
+      <line x1="212" y1="71" x2="266" y2="71" stroke="rgba(139,94,26,0.3)" stroke-width="0.7"/>
+      <text x="192" y="84" font-family="Arial,sans-serif" font-size="7" fill="rgba(70,45,10,0.6)" text-anchor="middle" letter-spacing="3">MUZYCZNE PREZENTY</text>
     </svg>
+  </a>
+  <ul>
+    <li><a href="#jak-to-dziala">Jak to działa</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#opinie">Opinie</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="#zamow" class="nav-cta">Zamów teraz</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-notes" id="heroNotes"></div>
+
+  <div class="hero-tag">🎵 Spersonalizowany prezent muzyczny z AI</div>
+  <h1>Piosenka i wideo<br><em>skrojone na miarę</em></h1>
+  <p class="hero-sub">Opisz nam osobę i okazję — AI stworzy unikalną piosenkę i film ze zdjęć, który rozczuli ją do łez. Gotowe już w 3 godziny.</p>
+  <div class="hero-actions">
+    <a href="#zamow" class="btn-primary">🎁 Zamów teraz — od 29 zł</a>
+    <a href="#jak-to-dziala" class="btn-secondary">Zobacz jak to działa</a>
   </div>
-
-  <div class="tagline">Coś wyjątkowego<br><strong>jest w drodze</strong></div>
-
-  <p class="subtitle">
-    Tworzymy serwis spersonalizowanych piosenek i wideo AI.<br>
-    Każdy prezent — unikalny. Każda piosenka — tylko dla jednej osoby.<br>
-    Wrócimy za chwilę. 🎵
-  </p>
-
-  <!-- Countdown do premiery — ustaw datę -->
-  <div class="countdown-wrap" id="countdown">
-    <div class="cd-box"><div class="cd-num" id="cd-d">00</div><div class="cd-label">dni</div></div>
-    <div class="cd-box"><div class="cd-num" id="cd-h">00</div><div class="cd-label">godzin</div></div>
-    <div class="cd-box"><div class="cd-num" id="cd-m">00</div><div class="cd-label">minut</div></div>
-    <div class="cd-box"><div class="cd-num" id="cd-s">00</div><div class="cd-label">sekund</div></div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">zadowolonych klientów</div></div>
+    <div class="stat"><div class="stat-num">3h</div><div class="stat-label">czas realizacji</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">unikalne teksty</div></div>
+    <div class="stat"><div class="stat-num">⭐ 4.9</div><div class="stat-label">średnia ocena</div></div>
   </div>
+</section>
 
-  <!-- Powiadom mnie -->
-  <div class="notify-wrap">
-    <div class="notify-label">Powiadom mnie gdy będziemy gotowi 🔔</div>
-    <div class="notify-row">
-      <input type="email" class="notify-input" id="notifyEmail" placeholder="twoj@email.pl">
-      <button class="notify-btn" onclick="submitNotify()">Powiadom mnie</button>
+<!-- HOW IT WORKS -->
+<section class="section" id="jak-to-dziala">
+  <div class="section-label">Jak to działa</div>
+  <h2 class="section-title">Prosty jak <em>zamówienie pizzy</em></h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">Krok 1</div>
+      <div class="step-icon">📝</div>
+      <h3>Wypełnij formularz</h3>
+      <p>Opisz osobę, okazję i to, co chcesz przekazać. Im więcej szczegółów — tym lepszy utwór.</p>
     </div>
-    <div class="notify-success" id="notifySuccess">✅ Super! Damy znać jak wystartujemy 🎵</div>
+    <div class="step reveal">
+      <div class="step-num">Krok 2</div>
+      <div class="step-icon">💳</div>
+      <h3>Opłać zamówienie</h3>
+      <p>Szybka płatność BLIKiem, kartą lub przelewem. Bezpieczna transakcja przez Stripe.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">Krok 3</div>
+      <div class="step-icon">🤖</div>
+      <h3>AI tworzy dla Ciebie</h3>
+      <p>Nasz system AI pisze tekst, komponuje muzykę i pakuje wszystko w ładny plik.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">Krok 4</div>
+      <div class="step-icon">📩</div>
+      <h3>Odbierz na maila</h3>
+      <p>Gotowy prezent trafia na Twój email lub bezpośrednio do solenizanta już w ciągu 3h.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-label">Okazje</div>
+  <h2 class="section-title">Na każdą <em>wyjątkową chwilę</em></h2>
+  <div class="occasions reveal">
+    <span class="occasion-tag">🎂 Urodziny</span>
+    <span class="occasion-tag">💍 Ślub</span>
+    <span class="occasion-tag">🌸 Imieniny</span>
+    <span class="occasion-tag">👶 Narodziny dziecka</span>
+    <span class="occasion-tag">💑 Rocznica</span>
+    <span class="occasion-tag">🎓 Absolutorium</span>
+    <span class="occasion-tag">💝 Walentynki</span>
+    <span class="occasion-tag">👨‍👩‍👧 Dzień Matki / Ojca</span>
+    <span class="occasion-tag">🏆 Awans w pracy</span>
+    <span class="occasion-tag">🎅 Mikołajki</span>
+    <span class="occasion-tag">🤗 Podziękowanie</span>
+    <span class="occasion-tag">✨ Dowolna okazja</span>
+  </div>
+</section>
+
+<!-- PRODUCTS / PRICING -->
+<section class="section products-bg" id="cennik">
+  <div class="section-label">Cennik</div>
+  <h2 class="section-title" style="color: var(--cream);">Wybierz swój <em>prezent</em></h2>
+  <div class="products">
+    <div class="product-card reveal">
+      <div class="product-icon">🎵</div>
+      <div class="product-name">Piosenka</div>
+      <div class="product-desc">Spersonalizowana piosenka z tekstem i muzyką AI — z imieniem, wspomnieniami i historią tej osoby. Wysyłka na Twój email lub bezpośrednio do obdarowanego.</div>
+      <div class="product-price">29 <span>zł</span></div>
+      <ul class="product-features">
+        <li>Unikalny tekst + muzyka AI</li>
+        <li>Plik MP3 do pobrania (~2 minuty)</li>
+        <li>PDF z tekstem piosenki</li>
+        <li>🎁 GRATIS: krótki wiersz (4 wersy)</li>
+        <li>Wysyłka do Ciebie lub obdarowanego</li>
+        <li>Czas realizacji: do 3h</li>
+      </ul>
+      <a href="#zamow" class="btn-order">Zamów piosenkę</a>
+    </div>
+    <div class="product-card featured reveal">
+      <div class="product-badge">⭐ Bestseller</div>
+      <div class="product-icon">🎬</div>
+      <div class="product-name">Piosenka + Wideo</div>
+      <div class="product-desc">Piosenka AI + piękny film ze zdjęć które nam wyślesz. Muzyka, tekst na ekranie i Wasze wspólne zdjęcia w jednym niezapomnianym prezencie.</div>
+      <div class="product-price">59 <span>zł</span></div>
+      <ul class="product-features">
+        <li>Piosenka MP3 (~2 minuty) + PDF z tekstem</li>
+        <li>Film ze zdjęć z muzyką</li>
+        <li>Tekst animowany na ekranie</li>
+        <li>🎁 GRATIS: krótki wiersz (4 wersy)</li>
+        <li>Wysyłka do Ciebie lub obdarowanego</li>
+        <li>Czas realizacji: do 3h</li>
+        <li>1 poprawka gratis</li>
+      </ul>
+      <a href="#zamow" class="btn-order">Zamów z wideo</a>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-badge" style="background:linear-gradient(135deg,#c9963a,#e05c3a);">👑 Premium</div>
+      <div class="product-icon">👑</div>
+      <div class="product-name">Premium</div>
+      <div class="product-desc">Dwie piosenki + wideo AI ze zdjęć do każdej piosenki. Idealne na śluby, okrągłe urodziny i wielkie jubileusze — prezent który zostaje na całe życie.</div>
+      <div class="product-price">99 <span>zł</span></div>
+      <ul class="product-features">
+        <li>2 × piosenka MP3 (2,5–3 min) + PDF</li>
+        <li>2 × film ze zdjęć z muzyką</li>
+        <li>🎁 GRATIS: krótki wiersz (4 wersy)</li>
+        <li>Wysyłka do Ciebie lub obdarowanego</li>
+        <li>Priorytetowa realizacja: do 1,5h</li>
+        <li>2 poprawki gratis</li>
+      </ul>
+      <a href="#zamow" class="btn-order">Zamów Premium</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="section" id="zamow">
+  <div class="section-label">Zamówienie</div>
+  <h2 class="section-title">Stwórz <em>wyjątkowy prezent</em></h2>
+  <div class="form-container reveal">
+    <div class="type-selector">
+      <button class="type-btn active" onclick="selectType(this, 'piosenka', 29)">
+        <span class="type-btn-icon">🎵</span>
+        <span class="type-btn-label">Piosenka — 29 zł</span>
+      </button>
+      <button class="type-btn" onclick="selectType(this, 'wideo', 59)">
+        <span class="type-btn-icon">🎬</span>
+        <span class="type-btn-label">+ Wideo — 59 zł</span>
+      </button>
+      <button class="type-btn" onclick="selectType(this, 'premium', 99)">
+        <span class="type-btn-icon">👑</span>
+        <span class="type-btn-label">Premium — 99 zł</span>
+      </button>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Twoje imię *</label>
+        <input type="text" placeholder="np. Marek" id="buyerName">
+      </div>
+      <div class="form-group">
+        <label>Twój email *</label>
+        <input type="email" placeholder="twoj@email.pl" id="buyerEmail">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Imię osoby obdarowywanej *</label>
+        <input type="text" placeholder="np. Kasia" id="recipientName">
+      </div>
+      <div class="form-group">
+        <label>Okazja *</label>
+        <select id="occasion">
+          <option value="">Wybierz okazję...</option>
+          <option>🎂 Urodziny</option>
+          <option>💍 Ślub</option>
+          <option>🌸 Imieniny</option>
+          <option>💑 Rocznica</option>
+          <option>👶 Narodziny dziecka</option>
+          <option>🎓 Absolutorium</option>
+          <option>💝 Walentynki</option>
+          <option>👨‍👩‍👧 Dzień Matki</option>
+          <option>👨‍👩‍👧 Dzień Ojca</option>
+          <option>✨ Inna okazja</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Opisz osobę obdarowywaną *</label>
+      <textarea placeholder="Kim jest ta osoba? Jakie ma zainteresowania, cechy charakteru? Co jest w niej wyjątkowego? Jak ją znasz?" id="personDesc"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Co ma zawierać utwór? *</label>
+      <textarea placeholder="O czym ma być piosenka/wiersz? Jakie wspomnienia, życzenia, słowa chcesz przekazać? Jaki nastrój — wzruszający, wesoły, śmieszny?" id="contentDesc"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Styl muzyczny</label>
+        <select id="musicStyle">
+          <option value="">Wybierz styl...</option>
+          <option>🎹 Pop</option>
+          <option>🎸 Rock</option>
+          <option>🎶 Ballada</option>
+          <option>🥁 Hip-hop / Rap</option>
+          <option>🪗 Folk / Biesiadna</option>
+          <option>🎷 Jazz</option>
+          <option>🎻 Klasyczna</option>
+          <option>✨ AI niech zdecyduje</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Email do wysyłki prezentu</label>
+        <input type="email" placeholder="odbiorca@email.pl (opcjonalnie)" id="recipientEmail">
+      </div>
+    </div>
+
+    <div class="form-group" id="photoGroup" style="display:none;">
+      <label>Zdjęcia do wideo (dla pakietu z wideo) 📸</label>
+      <input type="file" multiple accept="image/*" id="photoUpload"
+        style="padding:12px 18px; border: 1.5px dashed rgba(201,150,58,0.4); border-radius:12px; background:var(--cream); width:100%; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--muted);">
+      <div style="font-size:0.78rem; color:var(--muted); margin-top:6px;">Prześlij 5-15 zdjęć. Wyślemy Ci instrukcję jak je dostarczyć po zamówieniu.</div>
+    </div>
+
+    <div class="price-display">
+      <div>
+        <div class="price-display-label">Do zapłaty</div>
+        <div style="font-size: 0.82rem; color: rgba(250,246,240,0.4); margin-top: 2px;">Bezpieczna płatność kartą lub BLIK</div>
+      </div>
+      <div class="price-display-amount" id="priceDisplay">29 zł</div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:16px;">
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer; font-size:0.85rem; color:var(--muted); font-weight:400;">
+        <input type="checkbox" id="consentRodo" style="width:18px; height:18px; min-width:18px; margin-top:2px; accent-color:var(--gold); cursor:pointer;">
+        <span>Wyrażam zgodę na przetwarzanie moich danych osobowych przez NutaNaŻyczenie w celu realizacji zamówienia, zgodnie z <a href="regulamin.html#polityka-prywatnosci" style="color:var(--gold);" target="_blank">Polityką Prywatności</a>. Podanie danych jest dobrowolne, ale niezbędne do realizacji zamówienia. *</span>
+      </label>
+    </div>
+    <div class="form-group" style="margin-bottom:24px;">
+      <label style="display:flex; align-items:flex-start; gap:12px; cursor:pointer; font-size:0.85rem; color:var(--muted); font-weight:400;">
+        <input type="checkbox" id="consentRegulamin" style="width:18px; height:18px; min-width:18px; margin-top:2px; accent-color:var(--gold); cursor:pointer;">
+        <span>Zapoznałem/am się z <a href="regulamin.html" style="color:var(--gold);" target="_blank">Regulaminem sklepu</a> i akceptuję jego postanowienia, w tym informację o braku prawa do odstąpienia od umowy dla produktów tworzonych na indywidualne zamówienie. *</span>
+      </label>
+    </div>
+    <button type="button" class="btn-submit" onclick="submitOrder()">
+      💳 Przejdź do płatności
+    </button>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="opinie" style="background: var(--warm-white);">
+  <div class="section-label">Opinie</div>
+  <h2 class="section-title">Co mówią nasi <em>klienci</em></h2>
+  <div class="testimonials">
+    <div class="testimonial reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">Zamówiłam piosenkę dla taty na 60. urodziny. Płakał jak bóbr. Nigdy wcześniej nie widziałam go tak wzruszonego. To był najlepszy prezent jaki mu dałam.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👩</div>
+        <div>
+          <div class="testimonial-name">Agnieszka K.</div>
+          <div class="testimonial-occasion">Urodziny taty</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">Kupiłem piosenkę z wideo dla żony na rocznicę. Wysłałem jej nasze zdjęcia, a oni zrobili z tego piękny film z muzyką i jej imieniem. Była zachwycona. Na pewno wrócę!</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">👨</div>
+        <div>
+          <div class="testimonial-name">Piotr W.</div>
+          <div class="testimonial-occasion">Rocznica ślubu</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">Piosenka hip-hopowa dla przyjaciela na imieniny była absolutnym hitem na imprezie. Wszyscy pękali ze śmiechu. Polecam każdemu kto chce zaskoczyć kogoś naprawdę oryginalnie.</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">🧑</div>
+        <div>
+          <div class="testimonial-name">Kamil B.</div>
+          <div class="testimonial-occasion">Imieniny przyjaciela</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title">Często zadawane <em>pytania</em></h2>
+  <div class="faq-list">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Jak długo czeka się na zamówienie? <span class="faq-arrow">+</span></div>
+      <div class="faq-answer">Piosenki są gotowe w ciągu 3 godzin od potwierdzenia płatności. Pakiety z wideo realizujemy do 3h. Zamówienia Premium priorytetowo w 1,5h.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Czy utwór jest naprawdę unikalny? <span class="faq-arrow">+</span></div>
+      <div class="faq-answer">Tak! Każdy utwór tworzony jest od zera na podstawie Twoich danych. Nie używamy szablonów — im więcej szczegółów podasz, tym bardziej spersonalizowany będzie efekt.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Co jeśli nie będę zadowolony z efektu? <span class="faq-arrow">+</span></div>
+      <div class="faq-answer">Każde zamówienie zawiera 1 bezpłatną poprawkę (Premium — 2 poprawki). Napisz na <a href="mailto:zamowienia@nutanazyczenie.pl" style="color:var(--gold);">zamowienia@nutanazyczenie.pl</a> z numerem zamówienia i uwagami — dostosujemy utwór do Twoich oczekiwań.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Jakie metody płatności akceptujecie? <span class="faq-arrow">+</span></div>
+      <div class="faq-answer">Przyjmujemy płatności przez BLIK, kartę debetową/kredytową oraz szybki przelew bankowy. Wszystkie transakcje są szyfrowane i realizowane przez Stripe.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">Czy piosenkę mogę wysłać bezpośrednio do solenizanta? <span class="faq-arrow">+</span></div>
+      <div class="faq-answer">Oczywiście! Podaj w formularzu adres email osoby obdarowywanej, a gotowy prezent trafi bezpośrednio do niej w wybranym przez Ciebie czasie.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section" id="kontakt" style="background: var(--warm-white);">
+  <div class="section-label">Kontakt</div>
+  <h2 class="section-title">Napisz <em>do nas</em></h2>
+  <div style="max-width: 680px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+    <div style="background:white; border:1px solid rgba(201,150,58,0.2); border-radius:20px; padding:32px 28px; text-align:center;">
+      <div style="font-size:2.2rem; margin-bottom:16px;">📦</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--deep); margin-bottom:10px;">Zamówienia i poprawki</h3>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.65; margin-bottom:20px;">Pytania dotyczące realizacji zamówienia, prośby o poprawki, status dostawy.</p>
+      <a href="mailto:zamowienia@nutanazyczenie.pl"
+         style="display:inline-block; background:var(--gold); color:white; padding:12px 24px; border-radius:100px; text-decoration:none; font-size:0.88rem; font-weight:500;">
+        zamowienia@nutanazyczenie.pl
+      </a>
+    </div>
+
+    <div style="background:white; border:1px solid rgba(201,150,58,0.2); border-radius:20px; padding:32px 28px; text-align:center;">
+      <div style="font-size:2.2rem; margin-bottom:16px;">💬</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--deep); margin-bottom:10px;">Kontakt ogólny</h3>
+      <p style="font-size:0.88rem; color:var(--muted); line-height:1.65; margin-bottom:20px;">Współpraca, pytania o ofertę, inne sprawy niezwiązane z konkretnym zamówieniem.</p>
+      <a href="mailto:kontakt@nutanazyczenie.pl"
+         style="display:inline-block; background:transparent; color:var(--gold); padding:11px 24px; border-radius:100px; text-decoration:none; font-size:0.88rem; font-weight:500; border:1.5px solid var(--gold);">
+        kontakt@nutanazyczenie.pl
+      </a>
+    </div>
+
   </div>
 
-  <!-- Socials -->
-  <div class="socials">
-    <a href="#" class="social-link">📸 Instagram</a>
-    <a href="#" class="social-link">🎵 TikTok</a>
-    <a href="#" class="social-link">📘 Facebook</a>
-    <a href="mailto:kontakt@nutanazyczenie.pl" class="social-link">✉️ Kontakt</a>
+  <div style="max-width:680px; margin:32px auto 0; background:white; border:1px solid rgba(201,150,58,0.2); border-radius:20px; padding:36px 32px;">
+    <h3 style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--deep); margin-bottom:20px; text-align:center;">Formularz kontaktowy</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+      <div>
+        <label style="display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px;">Imię *</label>
+        <input type="text" id="contactName" placeholder="Twoje imię"
+          style="width:100%; padding:12px 16px; border:1.5px solid rgba(61,43,31,0.12); border-radius:10px; font-size:0.9rem; font-family:'DM Sans',sans-serif; outline:none; box-sizing:border-box;">
+      </div>
+      <div>
+        <label style="display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px;">Email *</label>
+        <input type="email" id="contactEmail" placeholder="twoj@email.pl"
+          style="width:100%; padding:12px 16px; border:1.5px solid rgba(61,43,31,0.12); border-radius:10px; font-size:0.9rem; font-family:'DM Sans',sans-serif; outline:none; box-sizing:border-box;">
+      </div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <label style="display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px;">Temat *</label>
+      <select id="contactSubject"
+        style="width:100%; padding:12px 16px; border:1.5px solid rgba(61,43,31,0.12); border-radius:10px; font-size:0.9rem; font-family:'DM Sans',sans-serif; outline:none; background:var(--cream);">
+        <option value="">Wybierz temat...</option>
+        <option value="poprawka">Prośba o poprawkę zamówienia</option>
+        <option value="status">Pytanie o status zamówienia</option>
+        <option value="wspolpraca">Współpraca / oferta</option>
+        <option value="inne">Inne pytanie</option>
+      </select>
+    </div>
+    <div style="margin-bottom:20px;">
+      <label style="display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px;">Wiadomość *</label>
+      <textarea id="contactMessage" placeholder="Opisz swoje pytanie lub problem..." rows="4"
+        style="width:100%; padding:12px 16px; border:1.5px solid rgba(61,43,31,0.12); border-radius:10px; font-size:0.9rem; font-family:'DM Sans',sans-serif; outline:none; resize:vertical; box-sizing:border-box;"></textarea>
+    </div>
+    <button onclick="submitContact()"
+      style="width:100%; padding:15px; background:var(--gold); color:white; border:none; border-radius:100px; font-size:1rem; font-weight:500; cursor:pointer; font-family:'DM Sans',sans-serif;">
+      Wyślij wiadomość
+    </button>
+    <div id="contactSuccess" style="display:none; text-align:center; margin-top:16px; color:var(--gold); font-size:0.9rem;">
+      ✅ Dziękujemy! Odpowiemy najszybciej jak to możliwe.
+    </div>
   </div>
+</section>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><em>Nuta</em>NaŻyczenie</div>
+  <div class="footer-tagline">Spersonalizowane piosenki i wideo AI na każdą okazję 🎵</div>
+  <div class="footer-links">
+    <a href="regulamin.html">Regulamin</a>
+    <a href="regulamin.html#polityka-prywatnosci">Polityka prywatności</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#faq">FAQ</a>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+    <a href="#">Facebook</a>
+  </div>
+  <div class="footer-copy">© 2026 NutaNaŻyczenie. Wszelkie prawa zastrzeżone.</div>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h3>Zamówienie przyjęte!</h3>
+    <p>Za chwilę zostaniesz przekierowany do płatności. Po jej zrealizowaniu otrzymasz email z potwierdzeniem. Twój prezent będzie gotowy już w ciągu 3 godzin!</p>
+    <button class="btn-close" onclick="closeSuccess()">Super, dziękuję!</button>
+  </div>
 </div>
-
-<div class="footer-note">© 2026 NutaNaŻyczenie</div>
 
 <script>
   // Floating notes
   const notes = ['♩','♪','♫','♬','🎵','🎶'];
-  const bg = document.getElementById('floatNotes');
-  for (let i = 0; i < 14; i++) {
-    const n = document.createElement('div');
-    n.className = 'float-note';
+  const container = document.getElementById('heroNotes');
+  for (let i = 0; i < 18; i++) {
+    const n = document.createElement('span');
+    n.className = 'note';
     n.textContent = notes[Math.floor(Math.random() * notes.length)];
     n.style.left = Math.random() * 100 + '%';
-    n.style.animationDuration = (10 + Math.random() * 15) + 's';
-    n.style.animationDelay = (Math.random() * 12) + 's';
+    n.style.animationDuration = (8 + Math.random() * 12) + 's';
+    n.style.animationDelay = (Math.random() * 10) + 's';
     n.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-    bg.appendChild(n);
+    container.appendChild(n);
   }
 
-  // Countdown — ZMIEŃ datę na datę premiery
-  const LAUNCH_DATE = new Date('2026-06-01T10:00:00');
-  function updateCountdown() {
-    const now = new Date();
-    const diff = LAUNCH_DATE - now;
-    if (diff <= 0) {
-      document.getElementById('countdown').style.display = 'none';
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Type selector
+  let currentPrice = 29;
+  function selectType(btn, type, price) {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPrice = price;
+    document.getElementById('priceDisplay').textContent = price + ' zł';
+    // Show photo upload for wideo and premium
+    const photoGroup = document.getElementById('photoGroup');
+    photoGroup.style.display = (type === 'wideo' || type === 'premium') ? 'block' : 'none';
+  }
+
+  // FAQ
+  function toggleFaq(item) {
+    item.classList.toggle('open');
+  }
+
+  // Form submit
+  // Backend API — Railway
+  const API_URL = 'https://web-production-39b81.up.railway.app';
+
+  function submitOrder() {
+    const name     = document.getElementById('buyerName').value;
+    const email    = document.getElementById('buyerEmail').value;
+    const recipient= document.getElementById('recipientName').value;
+    const occasion = document.getElementById('occasion').value;
+    const person   = document.getElementById('personDesc').value;
+    const content  = document.getElementById('contentDesc').value;
+    const consentRodo = document.getElementById('consentRodo').checked;
+    const consentReg  = document.getElementById('consentRegulamin').checked;
+
+    if (!name || !email || !recipient || !occasion || !person || !content) {
+      alert('Proszę wypełnić wszystkie wymagane pola oznaczone *');
       return;
     }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
-    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // Notify submit
-  function submitNotify() {
-    const email = document.getElementById('notifyEmail').value;
-    if (!email || !email.includes('@')) {
+    if (!email.includes('@')) {
       alert('Podaj prawidłowy adres email');
       return;
     }
-    document.getElementById('notifySuccess').style.display = 'block';
-    document.getElementById('notifyEmail').value = '';
-    // Tu podłączysz endpoint zbierający emaile (np. Resend lub Supabase)
-    console.log('Email do powiadomień:', email);
+    if (!consentRodo || !consentReg) {
+      alert('Akceptacja zgód jest wymagana do realizacji zamówienia.');
+      return;
+    }
+
+    const activeBtn   = document.querySelector('.type-btn.active');
+    const packageType = activeBtn ? activeBtn.getAttribute('onclick').match(/'(\w+)'/)[1] : 'piosenka';
+    const photoInput  = document.getElementById('photoUpload');
+
+    // Walidacja zdjęć dla pakietów z wideo
+    if ((packageType === 'wideo' || packageType === 'premium') && photoInput.files.length === 0) {
+      alert('Do tego pakietu musisz załączyć zdjęcia (od 5 do 15 sztuk).');
+      return;
+    }
+    if ((packageType === 'wideo' || packageType === 'premium') && photoInput.files.length > 15) {
+      alert('Maksymalnie 15 zdjęć.');
+      return;
+    }
+
+    // Blokujemy przycisk
+    const btn = document.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = '⏳ Przesyłam pliki i przetwarzam...';
+
+    // FormData — obsługuje tekst + pliki jednocześnie
+    const formData = new FormData();
+    formData.append('buyer_name',    name);
+    formData.append('buyer_email',   email);
+    formData.append('recipient_name',recipient);
+    formData.append('occasion',      occasion);
+    formData.append('package_type',  packageType);
+    formData.append('person_desc',   person);
+    formData.append('content_desc',  content);
+    formData.append('music_style',   document.getElementById('musicStyle').value);
+    const recipientEmail = document.getElementById('recipientEmail').value;
+    if (recipientEmail) formData.append('recipient_email', recipientEmail);
+
+    // Dodajemy zdjęcia (tylko dla pakietów wideo/premium)
+    if (packageType === 'wideo' || packageType === 'premium') {
+      for (let i = 0; i < photoInput.files.length; i++) {
+        formData.append('photos', photoInput.files[i]);
+      }
+    }
+
+    // UWAGA: Przy FormData NIE ustawiamy Content-Type — przeglądarka robi to sama
+    fetch(`${API_URL}/api/order`, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+      } else {
+        alert('Błąd: ' + (data.detail || data.error || 'Spróbuj ponownie'));
+        btn.disabled = false;
+        btn.textContent = '💳 Przejdź do płatności';
+      }
+    })
+    .catch(err => {
+      console.error('Błąd:', err);
+      alert('Wystąpił błąd połączenia. Spróbuj ponownie.');
+      btn.disabled = false;
+      btn.textContent = '💳 Przejdź do płatności';
+    });
   }
+
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('show');
+  }
+
+  function submitContact() {
+    const name    = document.getElementById('contactName').value.trim();
+    const email   = document.getElementById('contactEmail').value.trim();
+    const subject = document.getElementById('contactSubject').value;
+    const message = document.getElementById('contactMessage').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      alert('Proszę wypełnić wszystkie pola formularza.');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Podaj prawidłowy adres email.');
+      return;
+    }
+
+    // Kierujemy wiadomości kontaktowe na kontakt@, poprawki na zamowienia@
+    const targetEmail = (subject === 'poprawka' || subject === 'status')
+      ? 'zamowienia@nutanazyczenie.pl'
+      : 'kontakt@nutanazyczenie.pl';
+
+    // Otwieramy klienta email z wypełnioną treścią
+    const mailtoBody = encodeURIComponent(`Imię: ${name}\nEmail: ${email}\n\n${message}`);
+    const mailtoSubject = encodeURIComponent(
+      subject === 'poprawka' ? 'Prośba o poprawkę zamówienia' :
+      subject === 'status'   ? 'Pytanie o status zamówienia' :
+      subject === 'wspolpraca' ? 'Współpraca' : 'Kontakt ze strony'
+    );
+    window.location.href = `mailto:${targetEmail}?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+    document.getElementById('contactSuccess').style.display = 'block';
+  }
+
+  // Smooth scroll for occasion tags
+  document.querySelectorAll('.occasion-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      const text = tag.textContent.replace(/[^\w\s]/g,'').trim();
+      const select = document.getElementById('occasion');
+      for (let opt of select.options) {
+        if (opt.text.includes(text.split(' ').pop())) {
+          select.value = opt.value;
+          break;
+        }
+      }
+      document.getElementById('zamow').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 </script>
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookieBanner" style="
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999;
+  background:var(--deep); color:rgba(250,246,240,0.85);
+  padding:20px 5%; border-top:2px solid var(--gold);
+  font-family:'DM Sans',sans-serif; font-size:0.88rem; line-height:1.6;
+">
+  <div style="max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:20px; justify-content:space-between;">
+    <div style="flex:1; min-width:260px;">
+      <strong style="color:var(--gold); font-size:0.95rem;">🍪 Ta strona używa plików cookies</strong><br>
+      Używamy cookies niezbędnych do działania strony oraz — za Twoją zgodą — analitycznych i marketingowych (Facebook Pixel, Google Ads) służących poprawie jakości usług i personalizacji reklam.
+      <a href="regulamin.html#polityka-prywatnosci" target="_blank" style="color:var(--gold); margin-left:4px;">Polityka prywatności</a>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <button onclick="acceptCookies('necessary')" style="
+        background:transparent; color:rgba(250,246,240,0.6);
+        border:1px solid rgba(250,246,240,0.2); padding:10px 20px;
+        border-radius:100px; cursor:pointer; font-family:'DM Sans',sans-serif;
+        font-size:0.85rem; transition:all 0.2s; white-space:nowrap;">
+        Tylko niezbędne
+      </button>
+      <button onclick="acceptCookies('all')" style="
+        background:var(--gold); color:white; border:none;
+        padding:10px 24px; border-radius:100px; cursor:pointer;
+        font-family:'DM Sans',sans-serif; font-size:0.85rem;
+        font-weight:500; transition:all 0.2s; white-space:nowrap;">
+        Akceptuję wszystkie
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Cookie banner logic
+  function setCookie(name, value, days) {
+    const d = new Date(); d.setTime(d.getTime() + days*24*60*60*1000);
+    document.cookie = name+'='+value+';expires='+d.toUTCString()+';path=/;SameSite=Lax';
+  }
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
+    return match ? match[2] : null;
+  }
+  function acceptCookies(level) {
+    setCookie('cookie_consent', level, 365);
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (level === 'all') {
+      // Tu wkleisz Facebook Pixel i Google Ads po ich otrzymaniu
+      console.log('Analytics & Marketing cookies accepted');
+    }
+  }
+  // Show banner if no consent yet
+  window.addEventListener('DOMContentLoaded', function() {
+    if (!getCookie('cookie_consent')) {
+      setTimeout(function() {
+        document.getElementById('cookieBanner').style.display = 'block';
+      }, 1500);
+    }
+  });
+</script>
+
 </body>
 </html>

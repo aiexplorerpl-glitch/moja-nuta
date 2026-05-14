@@ -648,7 +648,7 @@
         <li>Wysyłka do Ciebie lub obdarowanego</li>
         <li>Czas realizacji: do 55 min</li>
       </ul>
-      <a href="#zamow" class="btn-order">Zamów piosenkę</a>
+      <a href="#zamow" class="btn-order" onclick="selectPackage('piosenka')">Zamów piosenkę</a>
     </div>
     <div class="product-card featured reveal">
       <div class="product-badge">⭐ Bestseller</div>
@@ -665,7 +665,7 @@
         <li>Czas realizacji: do 55 min</li>
         <li>1 poprawka gratis</li>
       </ul>
-      <a href="#zamow" class="btn-order">Zamów z wideo</a>
+      <a href="#zamow" class="btn-order" onclick="selectPackage('wideo')">Zamów z wideo</a>
     </div>
     <div class="product-card reveal">
       <div class="product-badge" style="background:linear-gradient(135deg,#c9963a,#e05c3a);">👑 Premium</div>
@@ -681,7 +681,7 @@
         <li>Priorytetowa realizacja: do 30 min</li>
         <li>2 poprawki gratis</li>
       </ul>
-      <a href="#zamow" class="btn-order">Zamów Premium</a>
+      <a href="#zamow" class="btn-order" onclick="selectPackage('premium')">Zamów Premium</a>
     </div>
   </div>
 </section>
@@ -772,10 +772,79 @@
     </div>
 
     <div class="form-group" id="photoGroup" style="display:none;">
-      <label>Zdjęcia do wideo (dla pakietu z wideo) 📸</label>
+      <label>Zdjęcia do wideo 📸</label>
       <input type="file" multiple accept="image/*" id="photoUpload"
         style="padding:12px 18px; border: 1.5px dashed rgba(201,150,58,0.4); border-radius:12px; background:var(--cream); width:100%; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--muted);">
       <div style="font-size:0.78rem; color:var(--muted); margin-top:6px;">Prześlij 5-15 zdjęć. Wyślemy Ci instrukcję jak je dostarczyć po zamówieniu.</div>
+    </div>
+
+    <!-- POLA DRUGIEJ PIOSENKI — tylko dla pakietu Premium -->
+    <div id="premiumGroup" style="display:none;">
+      <div style="background:linear-gradient(135deg,rgba(201,150,58,0.1),rgba(201,150,58,0.04));
+                  border:1px solid rgba(201,150,58,0.3); border-radius:16px;
+                  padding:24px 20px; margin-bottom:22px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+          <span style="font-size:1.3rem;">👑</span>
+          <div>
+            <div style="font-weight:600; font-size:0.95rem; color:var(--deep);">Druga piosenka — Pakiet Premium</div>
+            <div style="font-size:0.78rem; color:var(--muted); margin-top:2px;">Wypełnij dane dla drugiego utworu (może być dla tej samej lub innej osoby)</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Imię osoby (2. piosenka) *</label>
+            <input type="text" placeholder="np. Marek" id="recipientName2">
+          </div>
+          <div class="form-group">
+            <label>Okazja (2. piosenka) *</label>
+            <select id="occasion2">
+              <option value="">Wybierz okazję...</option>
+              <option>🎂 Urodziny</option>
+              <option>💍 Ślub</option>
+              <option>🌸 Imieniny</option>
+              <option>💑 Rocznica</option>
+              <option>👶 Narodziny dziecka</option>
+              <option>🎓 Absolutorium</option>
+              <option>💝 Walentynki</option>
+              <option>👨‍👩‍👧 Dzień Matki</option>
+              <option>👨‍👩‍👧 Dzień Ojca</option>
+              <option>✨ Inna okazja</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Opisz osobę (2. piosenka) *</label>
+          <textarea placeholder="Kim jest ta osoba? Zainteresowania, cechy charakteru, co ją wyróżnia?" id="personDesc2" style="min-height:90px;"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Co ma zawierać 2. piosenka? *</label>
+          <textarea placeholder="O czym ma być? Jakie wspomnienia, życzenia, nastrój?" id="contentDesc2" style="min-height:90px;"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom:0;">
+          <label>Styl muzyczny (2. piosenka)</label>
+          <select id="musicStyle2">
+            <option value="">Wybierz styl...</option>
+            <option>🎹 Pop</option>
+            <option>🎸 Rock</option>
+            <option>🎶 Ballada</option>
+            <option>🥁 Hip-hop / Rap</option>
+            <option>🪗 Folk / Biesiadna</option>
+            <option>🎷 Jazz</option>
+            <option>🎻 Klasyczna</option>
+            <option>✨ AI niech zdecyduje</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-top:16px; margin-bottom:0;">
+          <label>Email odbiorcy 2. piosenki</label>
+          <input type="email" placeholder="np. mama@email.pl (opcjonalnie — wyślemy bezpośrednio do niej/niego)" id="recipientEmail2"
+            style="width:100%; padding:14px 18px; border:1.5px solid rgba(61,43,31,0.12); border-radius:12px; font-size:0.95rem; font-family:'DM Sans',sans-serif; color:var(--deep); background:var(--cream); outline:none;">
+        </div>
+      </div>
     </div>
 
     <div class="price-display">
@@ -1106,14 +1175,32 @@
 
   // Type selector
   let currentPrice = 29;
+  // Synchronizacja wyboru pakietu z cennika z formularzem
+  function selectPackage(packageType) {
+    const priceMap = { piosenka: 29, wideo: 59, premium: 99 };
+    const price    = priceMap[packageType] || 29;
+
+    // Znajdujemy odpowiedni przycisk w formularzu i go aktywujemy
+    const buttons = document.querySelectorAll('.type-btn');
+    buttons.forEach(btn => {
+      const onclickAttr = btn.getAttribute('onclick') || '';
+      if (onclickAttr.includes(`'${packageType}'`)) {
+        selectType(btn, packageType, price);
+      }
+    });
+  }
+
   function selectType(btn, type, price) {
     document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentPrice = price;
     document.getElementById('priceDisplay').textContent = price + ' zł';
-    // Show photo upload for wideo and premium
-    const photoGroup = document.getElementById('photoGroup');
+    // Zdjęcia — dla wideo i premium
+    const photoGroup   = document.getElementById('photoGroup');
     photoGroup.style.display = (type === 'wideo' || type === 'premium') ? 'block' : 'none';
+    // Pola 2. piosenki — tylko dla premium
+    const premiumGroup = document.getElementById('premiumGroup');
+    premiumGroup.style.display = (type === 'premium') ? 'block' : 'none';
   }
 
   // FAQ
@@ -1179,6 +1266,27 @@
     formData.append('music_style',   document.getElementById('musicStyle').value);
     const recipientEmail = document.getElementById('recipientEmail').value;
     if (recipientEmail) formData.append('recipient_email', recipientEmail);
+
+    // Dane drugiej piosenki — tylko dla Premium
+    if (packageType === 'premium') {
+      const name2    = document.getElementById('recipientName2').value.trim();
+      const occ2     = document.getElementById('occasion2').value;
+      const person2  = document.getElementById('personDesc2').value.trim();
+      const content2 = document.getElementById('contentDesc2').value.trim();
+      if (!name2 || !occ2 || !person2 || !content2) {
+        alert('Wypełnij dane drugiej piosenki (pakiet Premium zawiera dwa utwory).');
+        btn.disabled = false;
+        btn.textContent = '💳 Przejdź do płatności';
+        return;
+      }
+      formData.append('recipient_name2', name2);
+      formData.append('occasion2',       occ2);
+      formData.append('person_desc2',    person2);
+      formData.append('content_desc2',   content2);
+      formData.append('music_style2',    document.getElementById('musicStyle2').value);
+      const recipientEmail2 = document.getElementById('recipientEmail2').value.trim();
+      if (recipientEmail2) formData.append('recipient_email2', recipientEmail2);
+    }
 
     // Dodajemy zdjęcia (tylko dla pakietów wideo/premium)
     if (packageType === 'wideo' || packageType === 'premium') {

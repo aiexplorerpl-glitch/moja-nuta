@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamówienie przyjęte — NutaNaŻyczenie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAF6F0;
+    color: #1A1208;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Tło z gradientem */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,150,58,0.08) 0%, transparent 70%);
+  }
+
+  .card {
+    position: relative; z-index: 1;
+    background: white;
+    border-radius: 24px;
+    padding: 56px 48px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 8px 48px rgba(201,150,58,0.12);
+    border: 1px solid rgba(201,150,58,0.15);
+    text-align: center;
+  }
+
+  .emoji { font-size: 4rem; margin-bottom: 20px; display: block;
+           animation: bounce 0.8s ease; }
+
+  @keyframes bounce {
+    0%   { transform: scale(0.3); opacity: 0; }
+    60%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-style: italic;
+    color: #C9963A; margin-bottom: 16px; line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1rem; color: #7A6A5A;
+    line-height: 1.75; margin-bottom: 32px;
+  }
+
+  /* Pasek postępu */
+  .progress-wrap {
+    background: #FAF6F0;
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(201,150,58,0.15);
+  }
+
+  .progress-title {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #C9963A; margin-bottom: 16px;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .step {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.88rem; color: #7A6A5A;
+  }
+
+  .step-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.95rem; flex-shrink: 0;
+    background: rgba(201,150,58,0.1);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .step:nth-child(1) .step-icon { animation-delay: 0s; }
+  .step:nth-child(2) .step-icon { animation-delay: 0.4s; }
+  .step:nth-child(3) .step-icon { animation-delay: 0.8s; }
+  .step:nth-child(4) .step-icon { animation-delay: 1.2s; }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); background: rgba(201,150,58,0.1); }
+    50%      { transform: scale(1.1); background: rgba(201,150,58,0.22); }
+  }
+
+  .step-text strong { color: #1A1208; }
+
+  .tip {
+    background: rgba(201,150,58,0.06);
+    border-left: 3px solid #C9963A;
+    border-radius: 0 12px 12px 0;
+    padding: 14px 18px; margin-bottom: 28px;
+    font-size: 0.85rem; color: #5A3A10;
+    line-height: 1.6; text-align: left;
+  }
+
+  .tip strong { color: #C9963A; }
+
+  .btn {
+    display: inline-block;
+    background: #C9963A; color: white;
+    padding: 14px 36px; border-radius: 100px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: #E05C3A; transform: translateY(-2px); }
+
+  .footer-note {
+    margin-top: 24px; font-size: 0.78rem; color: #B8A89A;
+  }
+
+  /* Pływające nuty */
+  .note {
+    position: fixed; font-size: 1.4rem;
+    color: rgba(201,150,58,0.12); pointer-events: none; z-index: 0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.5; }
+    to   { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Pływające nuty w tle -->
+<div id="notes"></div>
+
+<div class="card">
+  <span class="emoji">🎉</span>
+
+  <h1>Płatność zakończona!</h1>
+
+  <p class="subtitle">
+    Twoje zamówienie zostało przyjęte i już pracujemy nad Twoim prezentem.
+    Nasi agenci AI właśnie piszą tekst i komponują muzykę.
+  </p>
+
+  <div class="progress-wrap">
+    <div class="progress-title">Co teraz się dzieje?</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">📝</div>
+        <div class="step-text"><strong>AI pisze spersonalizowany tekst</strong> piosenki</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🎵</div>
+        <div class="step-text"><strong>Kompozytor AI</strong> tworzy melodię i aranżację</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🎬</div>
+        <div class="step-text"><strong>Montażysta AI</strong> składa film ze zdjęć</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">📧</div>
+        <div class="step-text"><strong>Gotowy prezent</strong> trafia na Twój email</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip">
+    📬 <strong>Sprawdź skrzynkę email</strong> za kilkanaście–kilkadziesiąt minut.
+    Jeśli wiadomość nie przychodzi — sprawdź folder <strong>SPAM</strong>.
+    Pytania? Napisz na <strong>zamowienia@nutanazyczenie.pl</strong>
+  </div>
+
+  <a href="/" class="btn">Wróć na stronę główną</a>
+
+  <p class="footer-note">© 2026 NutaNaŻyczenie · nutanazyczenie.pl</p>
+</div>
+
+<script>
+  // Pływające nuty
+  const notes = ['♩','♪','♫','♬','🎵','🎶'];
+  const container = document.getElementById('notes');
+  for (let i = 0; i < 12; i++) {
+    const n = document.createElement('div');
+    n.className = 'note';
+    n.textContent = notes[Math.floor(Math.random() * notes.length)];
+    n.style.left = Math.random() * 100 + '%';
+    n.style.animationDuration = (10 + Math.random() * 15) + 's';
+    n.style.animationDelay = (Math.random() * 10) + 's';
+    n.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    container.appendChild(n);
+  }
+</script>
+
+</body>
+</html>

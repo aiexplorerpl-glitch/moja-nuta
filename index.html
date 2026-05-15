@@ -784,8 +784,12 @@
     <div class="form-group" id="photoGroup" style="display:none;">
       <label>Zdjęcia do wideo 📸</label>
       <input type="file" multiple accept="image/*" id="photoUpload"
+        onchange="handlePhotoUpload(this)"
         style="padding:12px 18px; border: 1.5px dashed rgba(201,150,58,0.4); border-radius:12px; background:var(--cream); width:100%; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--muted);">
-      <div style="font-size:0.78rem; color:var(--muted); margin-top:6px;">Prześlij 5-15 zdjęć. Wyślemy Ci instrukcję jak je dostarczyć po zamówieniu.</div>
+      <div style="font-size:0.78rem; color:var(--muted); margin-top:6px; line-height:1.6;">
+        Prześlij <strong>5–15 zdjęć</strong> · Maksymalny łączny rozmiar: <strong>20 MB</strong> · Zdjęcia zbyt duże zostaną automatycznie skompresowane przed wysłaniem.
+      </div>
+      <div id="photoStatus" style="display:none; margin-top:10px; padding:10px 14px; border-radius:10px; font-size:0.82rem;"></div>
     </div>
 
     <!-- POLA DRUGIEJ PIOSENKI — tylko dla pakietu Premium -->
@@ -1197,7 +1201,102 @@
 
   // Type selector
   let currentPrice = 29;
-  // Synchronizacja wyboru pakietu z cennika z formularzem
+  // ── Obsługa zdjęć z kompresją ────────────────────────────
+  const MAX_TOTAL_MB   = 20;
+  const MAX_SINGLE_MB  = 8;
+  const COMPRESS_IF_MB = 1;    // kompresuj jeśli plik > 1MB
+  const MAX_DIMENSION  = 1920; // max szerokość/wysokość po kompresji
+
+  let compressedFiles = []; // przechowuje skompresowane pliki
+
+  function showPhotoStatus(msg, type) {
+    const el = document.getElementById('photoStatus');
+    el.style.display = 'block';
+    el.style.background = type === 'ok'   ? 'rgba(40,167,69,0.08)'  :
+                          type === 'warn' ? 'rgba(255,165,0,0.08)'  :
+                                           'rgba(220,53,69,0.08)';
+    el.style.border = type === 'ok'   ? '1px solid rgba(40,167,69,0.2)'  :
+                      type === 'warn' ? '1px solid rgba(255,165,0,0.2)'  :
+                                       '1px solid rgba(220,53,69,0.2)';
+    el.style.color  = type === 'ok'   ? '#1a6b2a' :
+                      type === 'warn' ? '#8a5a00' : '#7a1a1a';
+    el.innerHTML = msg;
+  }
+
+  async function compressImage(file) {
+    return new Promise((resolve) => {
+      const sizeMB = file.size / 1024 / 1024;
+      if (sizeMB <= COMPRESS_IF_MB) { resolve(file); return; }
+
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        let { width, height } = img;
+        if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+          const ratio = Math.min(MAX_DIMENSION/width, MAX_DIMENSION/height);
+          width  = Math.round(width  * ratio);
+          height = Math.round(height * ratio);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width  = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        canvas.toBlob((blob) => {
+          const compressed = new File([blob], file.name, { type: 'image/jpeg' });
+          resolve(compressed);
+        }, 'image/jpeg', 0.82);
+      };
+      img.src = url;
+    });
+  }
+
+  async function handlePhotoUpload(input) {
+    const files = Array.from(input.files);
+    compressedFiles = [];
+
+    if (files.length === 0) {
+      document.getElementById('photoStatus').style.display = 'none';
+      return;
+    }
+    if (files.length > 15) {
+      showPhotoStatus('❌ Maksymalnie 15 zdjęć. Wybierz mniej plików.', 'error');
+      input.value = '';
+      return;
+    }
+    if (files.length < 5) {
+      showPhotoStatus('⚠️ Zalecamy minimum 5 zdjęć dla najlepszego efektu wideo.', 'warn');
+    }
+
+    showPhotoStatus('⏳ Sprawdzam i kompresuję zdjęcia...', 'warn');
+
+    let compressed = 0;
+    for (const file of files) {
+      const before = (file.size / 1024 / 1024).toFixed(1);
+      const result = await compressImage(file);
+      const after  = (result.size / 1024 / 1024).toFixed(1);
+      if (parseFloat(before) > COMPRESS_IF_MB) compressed++;
+      compressedFiles.push(result);
+    }
+
+    const totalMB = compressedFiles.reduce((s, f) => s + f.size, 0) / 1024 / 1024;
+
+    if (totalMB > MAX_TOTAL_MB) {
+      showPhotoStatus(
+        `❌ Łączny rozmiar zdjęć (${totalMB.toFixed(1)} MB) przekracza limit 20 MB. Wybierz mniejszą liczbę zdjęć lub mniejsze pliki.`,
+        'error'
+      );
+      input.value = '';
+      compressedFiles = [];
+      return;
+    }
+
+    const compMsg = compressed > 0 ? ` (${compressed} zdjęć skompresowano automatycznie)` : '';
+    showPhotoStatus(
+      `✅ ${files.length} zdjęć gotowych do wysłania · ${totalMB.toFixed(1)} MB${compMsg}`,
+      'ok'
+    );
+  }
   function selectPackage(packageType) {
     const priceMap = { piosenka: 29, wideo: 59, premium: 99 };
     const price    = priceMap[packageType] || 29;
@@ -1310,10 +1409,13 @@
       if (recipientEmail2) formData.append('recipient_email2', recipientEmail2);
     }
 
-    // Dodajemy zdjęcia (tylko dla pakietów wideo/premium)
+    // Dodajemy zdjęcia — skompresowane jeśli były za duże
     if (packageType === 'wideo' || packageType === 'premium') {
-      for (let i = 0; i < photoInput.files.length; i++) {
-        formData.append('photos', photoInput.files[i]);
+      const filesToSend = compressedFiles.length > 0
+        ? compressedFiles
+        : Array.from(photoInput.files);
+      for (let i = 0; i < filesToSend.length; i++) {
+        formData.append('photos', filesToSend[i]);
       }
     }
 

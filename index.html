@@ -792,8 +792,11 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Email do wysyłki prezentu</label>
-        <input type="email" placeholder="odbiorca@email.pl (opcjonalnie)" id="recipientEmail">
+        <label>Email do wysyłki prezentu <span style="font-weight:400; color:var(--muted);">(opcjonalne)</span></label>
+        <input type="email" placeholder="odbiorca@email.pl" id="recipientEmail">
+        <div style="font-size:0.75rem; color:var(--muted); margin-top:-12px; margin-bottom:12px;">
+          Jeśli puste — wyślemy na Twój email. Podaj email odbiorcy jeśli chcesz zaskoczyć go niespodzianką.
+        </div>
       </div>
     </div>
 
@@ -803,7 +806,7 @@
         onchange="handlePhotoUpload(this)"
         style="padding:12px 18px; border: 1.5px dashed rgba(201,150,58,0.4); border-radius:12px; background:var(--cream); width:100%; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--muted);">
       <div style="font-size:0.78rem; color:var(--muted); margin-top:6px; line-height:1.6;">
-        Prześlij <strong>5–15 zdjęć</strong> · Maksymalny łączny rozmiar: <strong>20 MB</strong> · Zdjęcia zbyt duże zostaną automatycznie skompresowane przed wysłaniem.
+        Prześlij <strong>5–15 zdjęć</strong> · Maks. łączny rozmiar: <strong>50 MB</strong> · Zdjęcia są automatycznie kompresowane przed wysłaniem.
       </div>
       <div id="photoStatus" style="display:none; margin-top:10px; padding:10px 14px; border-radius:10px; font-size:0.82rem;"></div>
     </div>
@@ -1106,13 +1109,11 @@
   <div class="footer-logo"><em>Nuta</em>NaŻyczenie</div>
   <div class="footer-tagline">Spersonalizowane piosenki i wideo AI na każdą okazję 🎵</div>
   <div class="footer-links">
-    <a href="regulamin.html">Regulamin</a>
-    <a href="regulamin.html#polityka-prywatnosci">Polityka prywatności</a>
-    <a href="#kontakt">Kontakt</a>
+    <a href="/regulamin">Regulamin</a>
+    <a href="/regulamin#polityka-prywatnosci">Polityka prywatności</a>
+    <a href="/kontakt">Kontakt</a>
     <a href="#faq">FAQ</a>
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#">Facebook</a>
+    <a href="mailto:zamowienia@nutanazyczenie.pl">zamowienia@nutanazyczenie.pl</a>
   </div>
   <div class="footer-copy">© 2026 NutaNaŻyczenie. Wszelkie prawa zastrzeżone.</div>
 </footer>
@@ -1151,8 +1152,8 @@
   // Type selector
   let currentPrice = 29;
   // ── Obsługa zdjęć z kompresją ────────────────────────────
-  const MAX_TOTAL_MB   = 20;
-  const MAX_SINGLE_MB  = 8;
+  const MAX_TOTAL_MB   = 50;
+  const MAX_SINGLE_MB  = 15;
   const COMPRESS_IF_MB = 1;    // kompresuj jeśli plik > 1MB
   const MAX_DIMENSION  = 1920; // max szerokość/wysokość po kompresji
 
@@ -1232,7 +1233,7 @@
 
     if (totalMB > MAX_TOTAL_MB) {
       showPhotoStatus(
-        `❌ Łączny rozmiar zdjęć (${totalMB.toFixed(1)} MB) przekracza limit 20 MB. Wybierz mniejszą liczbę zdjęć lub mniejsze pliki.`,
+        `❌ Łączny rozmiar zdjęć (${totalMB.toFixed(1)} MB) przekracza limit 50 MB. Wybierz mniejszą liczbę zdjęć lub mniejsze pliki.`,
         'error'
       );
       input.value = '';

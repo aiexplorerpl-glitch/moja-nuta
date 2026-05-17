@@ -20,9 +20,10 @@
   .back-link { font-size:0.85rem; color:var(--muted); text-decoration:none; transition:color 0.2s; }
   .back-link:hover { color:var(--gold); }
   .container { max-width:620px; margin:0 auto; padding:120px 5% 80px; }
+  .section-num { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
   .page-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--deep); margin-bottom:8px; }
   .page-title em { font-style:italic; color:var(--gold); }
-  .subtitle { color:var(--muted); font-size:0.95rem; margin-bottom:40px; padding-bottom:28px; border-bottom:2px solid rgba(201,150,58,0.2); }
+  .subtitle { color:var(--muted); font-size:0.95rem; margin-bottom:40px; padding-bottom:28px; border-bottom:2px solid rgba(201,150,58,0.2); line-height:1.6; }
   label { display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px; }
   input, textarea, select {
     width:100%; padding:13px 16px;
@@ -58,7 +59,7 @@
 </nav>
 
 <div class="container">
-  <p class="section-num" style="font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Obsługa zamówień</p>
+  <p class="section-num">Obsługa zamówień</p>
   <h1 class="page-title">Zgłoś <em>poprawkę</em></h1>
   <p class="subtitle">Masz 24 godziny od otrzymania zamówienia na bezpłatną poprawkę — dostępna dla pakietu Piosenka + Wideo oraz Premium.</p>
 
@@ -130,141 +131,6 @@
         document.getElementById('successSection').style.display = 'block';
       } else {
         errorMsg.textContent = data.detail || 'Wystąpił błąd. Napisz na zamowienia@nutanazyczenie.pl';
-        errorMsg.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Wyślij prośbę o poprawkę';
-      }
-    } catch (e) {
-      errorMsg.textContent = 'Błąd połączenia. Spróbuj ponownie.';
-      errorMsg.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Wyślij prośbę o poprawkę';
-    }
-  }
-</script>
-</body>
-</html>
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'DM Sans',sans-serif; background:#FAF6F0; color:#1A1208;
-         min-height:100vh; display:flex; flex-direction:column;
-         align-items:center; justify-content:center; padding:40px 20px; }
-  .card { background:white; border-radius:20px; padding:48px 40px;
-          max-width:540px; width:100%;
-          box-shadow:0 8px 40px rgba(201,150,58,0.12);
-          border:1px solid rgba(201,150,58,0.15); }
-  .logo { font-family:'Playfair Display',serif; font-size:1.5rem;
-          font-style:italic; color:#C9963A; text-align:center; margin-bottom:24px; }
-  h1 { font-family:'Playfair Display',serif; font-size:1.7rem; color:#1A1208;
-       text-align:center; margin-bottom:8px; }
-  .subtitle { color:#7A6A5A; text-align:center; font-size:0.9rem;
-              line-height:1.6; margin-bottom:32px; }
-  label { display:block; font-size:0.82rem; font-weight:500; color:#3D2B1F;
-          margin-bottom:6px; }
-  input, textarea, select {
-    width:100%; padding:13px 16px;
-    border:1.5px solid rgba(61,43,31,0.15); border-radius:12px;
-    font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#1A1208;
-    background:#FAF6F0; outline:none; transition:border-color 0.2s;
-    margin-bottom:18px;
-  }
-  input:focus, textarea:focus, select:focus { border-color:#C9963A; }
-  textarea { min-height:100px; resize:vertical; }
-  .btn { width:100%; padding:15px; background:#C9963A; color:white; border:none;
-         border-radius:100px; font-family:'DM Sans',sans-serif; font-size:1rem;
-         font-weight:500; cursor:pointer; transition:all 0.2s; }
-  .btn:hover { background:#E05C3A; transform:translateY(-1px); }
-  .btn:disabled { background:#B8A89A; cursor:not-allowed; transform:none; }
-  .info-box { background:rgba(201,150,58,0.07); border-left:3px solid #C9963A;
-              border-radius:0 10px 10px 0; padding:14px 18px; margin-bottom:24px;
-              font-size:0.83rem; color:#5A3A10; line-height:1.6; }
-  .success { display:none; text-align:center; padding:32px 0; }
-  .success .icon { font-size:3rem; margin-bottom:16px; }
-  .success h2 { color:#C9963A; font-family:'Playfair Display',serif;
-                font-size:1.4rem; margin-bottom:12px; }
-  .success p { color:#7A6A5A; font-size:0.9rem; line-height:1.6; }
-  .error-msg { color:#C0392B; font-size:0.85rem; margin-top:-12px;
-               margin-bottom:12px; display:none; }
-</style>
-</head>
-<body>
-<div class="card">
-  <div class="logo">NutaNaŻyczenie</div>
-
-  <div id="formSection">
-    <h1>Zgłoś poprawkę</h1>
-    <p class="subtitle">Masz 24 godziny od otrzymania zamówienia na zgłoszenie bezpłatnej poprawki (pakiet Wideo i Premium).</p>
-
-    <div class="info-box">
-      📋 Podaj numer zamówienia z emaila który otrzymałeś oraz opisz co chcesz zmienić.
-    </div>
-
-    <label>Numer zamówienia *</label>
-    <input type="text" id="orderId" placeholder="np. a444b2b9-df03-424d-b16b-eef426285988">
-
-    <label>Co chcesz poprawić? *</label>
-    <select id="correctionType">
-      <option value="">Wybierz...</option>
-      <option value="text">Tekst piosenki (słowa, treść)</option>
-      <option value="video">Film wideo (tylko Premium)</option>
-    </select>
-
-    <label>Opisz poprawkę *</label>
-    <textarea id="correctionNote" placeholder="Opisz dokładnie co chcesz zmienić. Im więcej szczegółów, tym lepszy efekt..."></textarea>
-
-    <div class="error-msg" id="errorMsg"></div>
-
-    <button class="btn" id="submitBtn" onclick="submitCorrection()">
-      Wyślij prośbę o poprawkę
-    </button>
-  </div>
-
-  <div class="success" id="successSection">
-    <div class="icon">✅</div>
-    <h2>Poprawka przyjęta!</h2>
-    <p>Twoja prośba została przyjęta i jest już realizowana.<br>
-    Nowa wersja dotrze na Twój email w ciągu 30 minut.</p>
-  </div>
-</div>
-
-<script>
-  const API_URL = 'https://web-production-39b81.up.railway.app';
-
-  async function submitCorrection() {
-    const orderId        = document.getElementById('orderId').value.trim();
-    const correctionType = document.getElementById('correctionType').value;
-    const correctionNote = document.getElementById('correctionNote').value.trim();
-    const errorMsg       = document.getElementById('errorMsg');
-
-    errorMsg.style.display = 'none';
-
-    if (!orderId || !correctionType || !correctionNote) {
-      errorMsg.textContent = 'Wypełnij wszystkie pola.';
-      errorMsg.style.display = 'block';
-      return;
-    }
-
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Wysyłam...';
-
-    try {
-      const resp = await fetch(`${API_URL}/api/correction/${orderId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          note:            correctionNote,
-          correction_type: correctionType,
-        }),
-      });
-
-      const data = await resp.json();
-
-      if (resp.ok) {
-        document.getElementById('formSection').style.display = 'none';
-        document.getElementById('successSection').style.display = 'block';
-      } else {
-        errorMsg.textContent = data.detail || 'Wystąpił błąd. Sprawdź numer zamówienia lub napisz na zamowienia@nutanazyczenie.pl';
         errorMsg.style.display = 'block';
         btn.disabled = false;
         btn.textContent = 'Wyślij prośbę o poprawkę';

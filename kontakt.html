@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — NutaNaŻyczenie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#C9963A; --deep:#1A1208; --muted:#7A6A5A; --brown:#3D2B1F; --warm-white:#FAF6F0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--warm-white); color:var(--deep); }
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    padding:16px 5%; display:flex; justify-content:space-between; align-items:center;
+    background:rgba(250,246,240,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,150,58,0.15);
+  }
+  .logo { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:900; font-style:italic; color:var(--gold); text-decoration:none; }
+  .logo span { color:var(--deep); }
+  .back-link { font-size:0.85rem; color:var(--muted); text-decoration:none; transition:color 0.2s; }
+  .back-link:hover { color:var(--gold); }
+  .container { max-width:960px; margin:0 auto; padding:120px 5% 80px; }
+  .section-num { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+  .page-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; color:var(--deep); margin-bottom:8px; }
+  .page-title em { font-style:italic; color:var(--gold); }
+  .subtitle { color:var(--muted); font-size:0.95rem; margin-bottom:56px; padding-bottom:28px; border-bottom:2px solid rgba(201,150,58,0.2); }
+
+  /* Kafelki */
+  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:28px; margin-bottom:64px; }
+  .card {
+    background:white; border-radius:20px; padding:36px 32px;
+    border:1px solid rgba(201,150,58,0.15);
+    box-shadow:0 4px 24px rgba(201,150,58,0.08);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform:translateY(-3px); box-shadow:0 8px 36px rgba(201,150,58,0.14); }
+  .card-icon { font-size:2.2rem; margin-bottom:16px; }
+  .card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--deep); margin-bottom:10px; }
+  .card p { font-size:0.88rem; color:var(--muted); line-height:1.7; margin-bottom:20px; }
+  .card-link {
+    display:inline-block; padding:10px 24px;
+    background:var(--gold); color:white; border-radius:100px;
+    font-size:0.85rem; font-weight:500; text-decoration:none;
+    transition:background 0.2s;
+  }
+  .card-link:hover { background:#E05C3A; }
+  .card-link.outline {
+    background:transparent; color:var(--gold);
+    border:1.5px solid var(--gold);
+  }
+  .card-link.outline:hover { background:var(--gold); color:white; }
+
+  /* Formularz kontaktowy */
+  .form-section { background:white; border-radius:20px; padding:48px 40px; border:1px solid rgba(201,150,58,0.15); box-shadow:0 4px 24px rgba(201,150,58,0.08); }
+  .form-section h2 { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--deep); margin-bottom:8px; }
+  .form-section .form-subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:32px; }
+  label { display:block; font-size:0.82rem; font-weight:500; color:var(--brown); margin-bottom:6px; }
+  input, textarea, select {
+    width:100%; padding:13px 16px;
+    border:1.5px solid rgba(61,43,31,0.15); border-radius:12px;
+    font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--deep);
+    background:var(--warm-white); outline:none; transition:border-color 0.2s;
+    margin-bottom:18px;
+  }
+  input:focus, textarea:focus, select:focus { border-color:var(--gold); }
+  textarea { min-height:110px; resize:vertical; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:600px) { .form-row { grid-template-columns:1fr; } }
+  .btn { width:100%; padding:15px; background:var(--gold); color:white; border:none;
+         border-radius:100px; font-family:'DM Sans',sans-serif; font-size:1rem;
+         font-weight:500; cursor:pointer; transition:all 0.2s; }
+  .btn:hover { background:#E05C3A; transform:translateY(-1px); }
+  #contactSuccess { display:none; text-align:center; padding:32px 0; color:var(--gold); }
+
+  footer { background:var(--deep); color:rgba(250,246,240,0.4); padding:32px 5%; text-align:center; font-size:0.85rem; margin-top:80px; }
+  footer a { color:var(--gold); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><em>Nuta</em><span>NaŻyczenie</span></a>
+  <a href="/" class="back-link">← Wróć do strony głównej</a>
+</nav>
+
+<div class="container">
+
+  <p class="section-num">Pomoc i obsługa</p>
+  <h1 class="page-title">Kontakt i <em>wsparcie</em></h1>
+  <p class="subtitle">Jesteśmy tu dla Ciebie — napisz do nas lub skorzystaj z formularza poprawki.</p>
+
+  <!-- Kafelki -->
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-icon">🎵</div>
+      <h3>Zamówienia</h3>
+      <p>Pytania dotyczące Twojego zamówienia, statusu realizacji lub problemów z dostawą? Napisz bezpośrednio na adres zamówień.</p>
+      <a href="mailto:zamowienia@nutanazyczenie.pl" class="card-link">zamowienia@nutanazyczenie.pl</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✏️</div>
+      <h3>Zgłoś poprawkę</h3>
+      <p>Masz 24 godziny od otrzymania zamówienia na bezpłatną poprawkę (pakiet Piosenka + Wideo i Premium). Skorzystaj z formularza.</p>
+      <a href="/poprawka" class="card-link">Formularz poprawki →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Ogólny kontakt</h3>
+      <p>Współpraca, pytania ogólne, sugestie dotyczące serwisu? Napisz do nas — odpowiemy w ciągu 24 godzin.</p>
+      <a href="mailto:kontakt@nutanazyczenie.pl" class="card-link outline">kontakt@nutanazyczenie.pl</a>
+    </div>
+
+  </div>
+
+  <!-- Formularz kontaktowy -->
+  <div class="form-section">
+    <h2>Napisz do nas</h2>
+    <p class="form-subtitle">Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin roboczych.</p>
+
+    <div id="contactForm">
+      <div class="form-row">
+        <div>
+          <label>Imię *</label>
+          <input type="text" id="contactName" placeholder="Twoje imię">
+        </div>
+        <div>
+          <label>Email *</label>
+          <input type="email" id="contactEmail" placeholder="twoj@email.pl">
+        </div>
+      </div>
+
+      <label>Temat</label>
+      <select id="contactSubject">
+        <option>Pytanie o zamówienie</option>
+        <option>Problem techniczny</option>
+        <option>Poprawka do zamówienia</option>
+        <option>Współpraca</option>
+        <option>Inne</option>
+      </select>
+
+      <label>Wiadomość *</label>
+      <textarea id="contactMessage" placeholder="Opisz swoje pytanie lub problem..."></textarea>
+
+      <button class="btn" onclick="sendContact()">Wyślij wiadomość</button>
+    </div>
+
+    <div id="contactSuccess">
+      <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
+      <p style="font-size:1.1rem;font-weight:500;">Wiadomość wysłana!</p>
+      <p style="color:var(--muted);font-size:0.9rem;margin-top:8px;">Odpiszemy w ciągu 24 godzin.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 NutaNaŻyczenie · <a href="/regulamin">Regulamin</a> · <a href="/kontakt">Kontakt</a></p>
+</footer>
+
+<script>
+async function sendContact() {
+  const name    = document.getElementById('contactName').value.trim();
+  const email   = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value;
+  const message = document.getElementById('contactMessage').value.trim();
+  if (!name || !email || !message) { alert('Wypełnij wszystkie wymagane pola.'); return; }
+  try {
+    await fetch('https://web-production-39b81.up.railway.app/api/contact', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, email, subject, message }),
+    });
+  } catch(e) {}
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>

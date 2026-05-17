@@ -27,6 +27,8 @@
 
 <!-- Canonical -->
 <link rel="canonical" href="https://nutanazyczenie.pl/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
 
 <!-- Structured Data (Google) -->
 <script type="application/ld+json">
@@ -479,6 +481,14 @@
     font-size: 0.95rem; cursor: pointer; font-family: 'DM Sans', sans-serif;
   }
 </style>
+<!-- Google Analytics — wklej swój kod GA4 -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script> -->
 </head>
 <body>
 
@@ -712,15 +722,14 @@
       </button>
     </div>
 
+    <div id="deliveryTimeInfo" style="font-size:0.82rem; color:#7A6A5A; text-align:center;
+         margin-top:-8px; margin-bottom:20px; padding:8px 16px;
+         background:rgba(201,150,58,0.06); border-radius:10px;
+         border:1px solid rgba(201,150,58,0.15);">
+      ⏱ Czas realizacji: do 55 minut · Brak poprawek
+    </div>
+
     <div class="form-row">
-      <div class="form-group">
-        <label>Twoje imię *</label>
-        <input type="text" placeholder="np. Marek" id="buyerName">
-      </div>
-      <div class="form-group">
-        <label>Twój email *</label>
-        <input type="email" placeholder="twoj@email.pl" id="buyerEmail">
-      </div>
     </div>
 
     <div class="form-row">
@@ -1249,12 +1258,19 @@
     btn.classList.add('active');
     currentPrice = price;
     document.getElementById('priceDisplay').textContent = price + ' zł';
-    // Zdjęcia — dla wideo i premium
     const photoGroup   = document.getElementById('photoGroup');
     photoGroup.style.display = (type === 'wideo' || type === 'premium') ? 'block' : 'none';
-    // Pola 2. piosenki — tylko dla premium
     const premiumGroup = document.getElementById('premiumGroup');
     premiumGroup.style.display = (type === 'premium') ? 'block' : 'none';
+
+    // Info o czasie realizacji
+    const timeInfo = document.getElementById('deliveryTimeInfo');
+    const timeMap  = {
+      piosenka: '⏱ Czas realizacji: do 55 minut · Brak poprawek',
+      wideo:    '⏱ Czas realizacji: do 55 minut · 1 bezpłatna poprawka (24h)',
+      premium:  '⏱ Priorytetowa realizacja: do 30 minut · 2 bezpłatne poprawki (24h)',
+    };
+    if (timeInfo) timeInfo.textContent = timeMap[type] || '';
   }
 
   // FAQ

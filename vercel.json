@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/kontakt",  "destination": "/kontakt.html"  },
+    { "source": "/poprawka", "destination": "/poprawka.html" },
+    { "source": "/sukces",   "destination": "/sukces.html"   },
+    { "source": "/regulamin","destination": "/regulamin.html"}
+  ]
+}

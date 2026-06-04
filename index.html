@@ -11,8 +11,46 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NutaNaŻyczenie — Spersonalizowane Piosenki i Wideo AI na każdą okazję</title>
-<meta name="description" content="Zamów spersonalizowaną piosenkę i wideo AI dla bliskiej osoby. Na urodziny, ślub, imieniny i każdą wyjątkową okazję. Od 29 zł, realizacja już w 55 min.">
+<title>Spersonalizowana Piosenka na Zamówienie — NutaNaŻyczenie | od 29 zł</title>
+<meta name="description" content="Zamów spersonalizowaną piosenkę i wideo AI dla bliskiej osoby. Na urodziny, rocznicę, ślub i każdą okazję. Z imieniem i historią obdarowanej osoby. Od 29 zł, gotowe w 55 minut.">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nutanazyczenie.pl/#organization",
+      "name": "NutaNaŻyczenie",
+      "url": "https://nutanazyczenie.pl",
+      "logo": "https://nutanazyczenie.pl/favicon.svg",
+      "contactPoint": { "@type": "ContactPoint", "email": "zamowienia@nutanazyczenie.pl", "contactType": "customer service", "availableLanguage": "Polish" }
+    },
+    {
+      "@type": "Product",
+      "name": "Spersonalizowana Piosenka na Zamówienie",
+      "description": "Unikalna piosenka z tekstem i muzyką AI — z imieniem, historią i okazją obdarowanej osoby. Gotowa w 30–55 minut.",
+      "brand": { "@id": "https://nutanazyczenie.pl/#organization" },
+      "url": "https://nutanazyczenie.pl",
+      "offers": [
+        { "@type": "Offer", "name": "Piosenka", "price": "29.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "name": "Piosenka + Wideo", "price": "59.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock" },
+        { "@type": "Offer", "name": "Premium", "price": "99.00", "priceCurrency": "PLN", "availability": "https://schema.org/InStock" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "10", "bestRating": "5" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Jak długo trwa realizacja?", "acceptedAnswer": { "@type": "Answer", "text": "Pakiety Piosenka i Piosenka+Wideo realizujemy w do 55 minut. Pakiet Premium priorytetowo w 30 minut." } },
+        { "@type": "Question", "name": "Ile kosztuje spersonalizowana piosenka?", "acceptedAnswer": { "@type": "Answer", "text": "Pakiet Piosenka kosztuje 29 zł, Piosenka+Wideo 59 zł, Premium 99 zł." } },
+        { "@type": "Question", "name": "Na jakie okazje można zamówić?", "acceptedAnswer": { "@type": "Answer", "text": "Urodziny, rocznica, ślub, imieniny, Dzień Matki i Ojca, walentynki, pożegnanie z pracą i każda inna okazja." } }
+      ]
+    }
+  ]
+}
+</script>
 <meta name="robots" content="index, follow">
 <meta name="author" content="NutaNaŻyczenie">
 
@@ -922,7 +960,11 @@
 <section class="section" id="opinie" style="background: var(--warm-white);">
   <div class="section-label">Opinie</div>
   <h2 class="section-title">Co mówią nasi <em>klienci</em></h2>
-  <div class="testimonials" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+  <div id="dynamicReviews" style="display:none;">
+    <!-- Tutaj ładowane są zatwierdzone opinie klientów -->
+  </div>
+
+  <div class="testimonials" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));" id="staticReviews">
 
     <div class="testimonial reveal">
       <div class="stars">★★★★★</div>
@@ -1247,6 +1289,35 @@
       'ok'
     );
   }
+
+  // ── Dynamiczne ładowanie opinii z backendu ──────────────
+  (async function loadReviews() {
+    try {
+      const resp = await fetch('https://web-production-39b81.up.railway.app/api/reviews');
+      if (!resp.ok) return;
+      const data = await resp.json();
+      if (!data.reviews || data.reviews.length === 0) return;
+      const container = document.getElementById('dynamicReviews');
+      const star = n => '★'.repeat(n) + '☆'.repeat(5-n);
+      const emojis = {urodziny:'🎂',rocznica:'💑','ślub':'💍',imieniny:'🌸',walentynki:'💝',mama:'👩',tata:'👨',pupil:'🐾'};
+      let html = '<div class="testimonials" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:0;">';
+      data.reviews.forEach(r => {
+        const emo = Object.entries(emojis).find(([k]) => r.occasion?.toLowerCase().includes(k))?.[1] || '🎵';
+        html += `<div class="testimonial">
+          <div class="stars" style="color:#C9963A;font-size:1.1rem;">${star(r.stars)}</div>
+          <div class="testimonial-text">${r.text}</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">${emo}</div>
+            <div><div class="testimonial-name">${r.name}</div>
+            <div class="testimonial-occasion">${r.occasion || '✅ Zweryfikowany zakup'}</div></div>
+          </div></div>`;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      container.style.display = 'block';
+    } catch(e) {}
+  })();
+
   function selectPackage(packageType) {
     const priceMap = { piosenka: 29, wideo: 59, premium: 99 };
     const price    = priceMap[packageType] || 29;

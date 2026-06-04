@@ -1,8 +1,13 @@
 {
   "rewrites": [
-    { "source": "/kontakt",  "destination": "/kontakt.html"  },
-    { "source": "/poprawka", "destination": "/poprawka.html" },
-    { "source": "/sukces",   "destination": "/sukces.html"   },
-    { "source": "/regulamin","destination": "/regulamin.html"}
+    { "source": "/kontakt",                  "destination": "/kontakt.html"                  },
+    { "source": "/poprawka",                 "destination": "/poprawka.html"                 },
+    { "source": "/sukces",                   "destination": "/sukces.html"                   },
+    { "source": "/regulamin",                "destination": "/regulamin.html"                },
+    { "source": "/opinia",                   "destination": "/opinia.html"                   },
+    { "source": "/piosenka-na-urodziny",     "destination": "/piosenka-na-urodziny.html"     },
+    { "source": "/wideo-ze-zdjec-z-muzyka",  "destination": "/wideo-ze-zdjec-z-muzyka.html"  },
+    { "source": "/piosenka-na-zamowienie",   "destination": "/piosenka-na-zamowienie.html"   },
+    { "source": "/prezent-na-rocznice",      "destination": "/prezent-na-rocznice.html"      }
   ]
 }
